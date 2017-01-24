@@ -25,4 +25,5 @@ def main(*args):
     # Render the document
     renderer = Renderer()
     renderer["edtext"] = convert
+    #  renderer["Afootnote"] = convert
     renderer.render(document)
