@@ -9,12 +9,12 @@ class edtext(Base.Command):
         Base.Command.invoke(self, tex)
 
 
-#  class Afootnote(Base.Command):
-    #  """\Afootnote{text}"""
-    #  args = 'text'
+class Afootnote(Base.Command):
+    """\Afootnote{text}"""
+    args = 'text'
 
-    #  def invoke(self, tex):
-        #  Base.Command.invoke(self, tex)
+    def invoke(self, tex):
+        Base.Command.invoke(self, tex)
 #
 #
 #class Bfootnote(Base.Command):

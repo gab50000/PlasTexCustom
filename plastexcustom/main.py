@@ -2,12 +2,18 @@
 import sys
 
 from plasTeX.TeX import TeX
+from plasTeX.ConfigManager import ConfigManager
 
 from custom_renderer import Renderer
 
 
+c = ConfigManager()
+c.add_section("debugging")
+c["debugging"]["verbose"] = "True"
+
 def convert(node):
-    return u'<{}>\n{}\n</{}>'.format(node.nodeName, unicode(node.attributes["text"].textContent), node.nodeName)
+    #  return u'<{}>\n{}\n</{}>'.format(node.nodeName, unicode(node.attributes["text"].textContent), node.nodeName)
+    return u'<{}>\n{}\n</{}>'.format(node.nodeName, "huhu", node.nodeName)
 
 
 def main(*args):
@@ -25,5 +31,5 @@ def main(*args):
     # Render the document
     renderer = Renderer()
     renderer["edtext"] = convert
-    #  renderer["Afootnote"] = convert
+    renderer["Afootnote"] = convert
     renderer.render(document)
