@@ -1,0 +1,7 @@
+name: edtext
+type: xml
+<edtext tal:content="self/attributes/text"></edtext>
+
+name: Afootnote
+type: xml
+alias: edtext
