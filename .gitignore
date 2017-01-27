@@ -4,6 +4,7 @@
 !*.py
 !*.sh
 !*.tex
+!*.zpts
 !plastexcustom/
 !tests/
 
