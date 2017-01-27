@@ -12,8 +12,7 @@ c.add_section("debugging")
 c["debugging"]["verbose"] = "True"
 
 def convert(node):
-    #  return u'<{}>\n{}\n</{}>'.format(node.nodeName, unicode(node.attributes["text"].textContent), node.nodeName)
-    return u'<{}>\n{}\n</{}>'.format(node.nodeName, "huhu", node.nodeName)
+    return u'<{}>\n{}\n</{}>'.format(node.nodeName, unicode(node.attributes["text"].textContent), node.nodeName)
 
 
 def main(*args):
