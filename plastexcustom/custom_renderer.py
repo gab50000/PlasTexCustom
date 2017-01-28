@@ -14,17 +14,14 @@ class Renderer(Renderer):
 
         # Start tag
         s.append('<%s>' % node.nodeName)
-
         # See if we have any attributes to render
         if node.hasAttributes():
-            s.append('<attributes>')
             for key, value in node.attributes.items():
                 # If the key is 'self', don't render it
                 # these nodes are the same as the child nodes
                 if key == 'self':
                     continue
                 s.append('<%s>%s</%s>' % (key, unicode(value), key))
-            s.append('</attributes>')
 
         # Invoke rendering on child nodes
         s.append(unicode(node))
