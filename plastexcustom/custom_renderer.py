@@ -3,7 +3,7 @@ from plasTeX.Renderers import Renderer
 
 
 class Renderer(Renderer):
-    
+
     def default(self, node):
         """ Rendering method for all non-text nodes """
         s = []
