@@ -1,4 +1,5 @@
-# Import renderer from previous code sample
+# TODO: Use plastex.Imagers.Imager to generate equation images
+
 import sys
 
 from plasTeX.TeX import TeX
@@ -15,6 +16,11 @@ def convert(node):
     return u'<{}>{}</{}>'.format(node.nodeName, node.attributes["text"], node.nodeName)
 
 
+def convert_edtext(node):
+    return u'<edtext><text>{}</text><content>{}</content>'.format(
+        node.attributes["text"], node.attributes["content"])
+
+
 def main(*args):
     # Instantiate a TeX processor and parse the input text
     tex = TeX()
@@ -29,6 +35,8 @@ def main(*args):
 
     # Render the document
     renderer = Renderer()
-    renderer["edtext"] = convert
+    renderer["edtext"] = convert_edtext
     renderer["Afootnote"] = convert
+    renderer["Bfootnote"] = convert
     renderer.render(document)
+
