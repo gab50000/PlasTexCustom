@@ -1,12 +1,15 @@
 # TODO: Use plastex.Imagers.Imager to generate equation images
 
 import sys
+import os
 
 from plasTeX.TeX import TeX
 from plasTeX.ConfigManager import ConfigManager
 
+from plastexcustom import packages
 from custom_renderer import Renderer
 
+sys.path.append(os.path.dirname(packages.__file__))
 
 c = ConfigManager()
 c.add_section("debugging")

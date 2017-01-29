@@ -6,11 +6,12 @@ setup(name='custex',
       author='Gabriel Kabbe',
       author_email='gabriel.kabbe@mail.de',
       license='GPLv3',
-      packages=['plastexcustom'],
+      packages=['plastexcustom',
+                'plastexcustom.packages'],
       install_requires=[],
       entry_points={
                     'console_scripts': ["custex=plastexcustom.main:main",
-                                        ],      
+                                        ],
       },
       zip_safe=False)
 
