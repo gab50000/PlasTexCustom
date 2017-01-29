@@ -2,6 +2,7 @@
 
 import sys
 import os
+import codecs
 
 from plasTeX.TeX import TeX
 from plasTeX.ConfigManager import ConfigManager
@@ -31,7 +32,7 @@ def main(*args):
     tex.ownerDocument.config['files']['split-level'] = -100
     tex.ownerDocument.config['files']['filename'] = 'test.xml'
 
-    with open(sys.argv[1], "r") as f:
+    with codecs.open(sys.argv[1], "r", encoding="utf-8") as f:
         file_content = f.read()
 
     tex.input(file_content)
