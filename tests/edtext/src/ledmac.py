@@ -2,8 +2,8 @@ from plasTeX import Base
 
 
 class edtext(Base.Command):
-    """\edtext{text}"""
-    args = 'text'
+    """\edtext{text}{content}"""
+    args = 'text content'
 
     def invoke(self, tex):
         Base.Command.invoke(self, tex)
