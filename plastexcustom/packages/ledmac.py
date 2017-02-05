@@ -11,28 +11,28 @@ class edtext(Base.Command):
 
 class Afootnote(Base.Command):
     """\Afootnote{text}"""
-    args = 'text:str'
+    args = 'text'
 
     def invoke(self, tex):
         Base.Command.invoke(self, tex)
 
 
 class Bfootnote(Base.Command):
-    args = 'text:str'
+    args = 'text'
 
     def invoke(self, tex):
         Base.Command.invoke(self, tex)
 
 
 class Cfootnote(Base.Command):
-    args = 'text:str'
+    args = 'text'
 
     def invoke(self, tex):
         Base.Command.invoke(self, tex)
 
 
 class lemma(Base.Command):
-    args = 'text:str'
+    args = 'text'
 
     def invoke(self, tex):
         Base.Command.invoke(self, tex)
