@@ -30,6 +30,10 @@ def do_nothing(node):
     return u''
 
 
+def convert_graphics(node):
+    return u"<graphics>\n<file>\n{}\n</file>\n</graphics>".format(node.attributes["file"])
+
+
 def main(*args):
     # Instantiate a TeX processor and parse the input text
     tex = TeX()
@@ -49,6 +53,7 @@ def main(*args):
     renderer["Bfootnote"] = convert
     renderer["Cfootnote"] = convert
     renderer["lemma"] = convert
+    renderer["includegraphics"] = convert_graphics
     renderer["vspace"] = do_nothing
     renderer["renewcommand"] = do_nothing
     renderer.render(document)
