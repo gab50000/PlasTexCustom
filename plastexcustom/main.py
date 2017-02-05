@@ -25,6 +25,9 @@ def convert_edtext(node):
     return u'<edtext><text>{}</text><content>{}</content>'.format(
         node.attributes["text"], node.attributes["content"])
 
+def do_nothing(node):
+    return u''
+
 
 def main(*args):
     # Instantiate a TeX processor and parse the input text
@@ -45,5 +48,7 @@ def main(*args):
     renderer["Bfootnote"] = convert
     renderer["Cfootnote"] = convert
     renderer["lemma"] = convert
+    renderer["vspace"] = do_nothing
+    renderer["renewcommand"] = do_nothing
     renderer.render(document)
 
