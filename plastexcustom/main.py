@@ -18,12 +18,13 @@ c["debugging"]["verbose"] = "True"
 
 
 def convert(node):
-    return u'<{}>{}</{}>'.format(node.nodeName, node.attributes["text"], node.nodeName)
+    return u'<{}>{}</{}>'.format(node.nodeName, unicode(node.attributes["text"]), node.nodeName)
 
 
 def convert_edtext(node):
-    return u'<edtext><text>{}</text><content>{}</content>'.format(
-        node.attributes["text"], node.attributes["content"])
+    return u'<edtext><text>{}</text><app>{}</app></edtext>'.format(
+        unicode(node.attributes["text"]), unicode(node.attributes["content"]))
+
 
 def do_nothing(node):
     return u''
