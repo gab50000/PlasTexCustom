@@ -11,6 +11,7 @@ setup(name='custex',
       install_requires=[],
       entry_points={
                     'console_scripts': ["custex=plastexcustom.main:main",
+                                        "prettify=plastexcustom.make_pretty:main"
                                         ],
       },
       zip_safe=False)
