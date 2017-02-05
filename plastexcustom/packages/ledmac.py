@@ -29,3 +29,10 @@ class Cfootnote(Base.Command):
 
     def invoke(self, tex):
         Base.Command.invoke(self, tex)
+
+
+class lemma(Base.Command):
+    args = 'text:str'
+
+    def invoke(self, tex):
+        Base.Command.invoke(self, tex)

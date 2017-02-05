@@ -43,5 +43,7 @@ def main(*args):
     renderer["edtext"] = convert_edtext
     renderer["Afootnote"] = convert
     renderer["Bfootnote"] = convert
+    renderer["Cfootnote"] = convert
+    renderer["lemma"] = convert
     renderer.render(document)
 
