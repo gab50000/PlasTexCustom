@@ -34,6 +34,13 @@ def convert_graphics(node):
     return u"<graphics>\n<file>\n{}\n</file>\n</graphics>".format(node.attributes["file"])
 
 
+def handle_equation(node):
+    try:
+        return u'<formula>{}</formula>'.format(node.attributes["formula"])
+    except:
+        import ipdb; ipdb.set_trace()
+
+
 def main(*args):
     # Instantiate a TeX processor and parse the input text
     tex = TeX()
@@ -56,5 +63,9 @@ def main(*args):
     renderer["includegraphics"] = convert_graphics
     renderer["vspace"] = do_nothing
     renderer["renewcommand"] = do_nothing
+    renderer["math"] = handle_equation
+    renderer["displaymath"] = handle_equation
+    renderer["eqnarray"] = handle_equation
+    renderer["equation"] = handle_equation
     renderer.render(document)
 
