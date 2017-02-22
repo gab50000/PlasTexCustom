@@ -7,5 +7,4 @@
 !*.zpts
 !plastexcustom/
 !tests/
-tests/leibniz1
 build

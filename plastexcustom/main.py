@@ -35,10 +35,11 @@ def convert_graphics(node):
 
 
 def handle_equation(node):
-    try:
-        return u'<formula>{}</formula>'.format(node.attributes["formula"])
-    except:
-        import ipdb; ipdb.set_trace()
+    return u'<formula>{}</formula>'.format(node.image.url)
+
+
+def handle_macro(node):
+    import ipdb; ipdb.set_trace
 
 
 def main(*args):
@@ -60,12 +61,13 @@ def main(*args):
     renderer["Bfootnote"] = convert
     renderer["Cfootnote"] = convert
     renderer["lemma"] = convert
-    renderer["includegraphics"] = convert_graphics
+    #renderer["includegraphics"] = handle_equation
     renderer["vspace"] = do_nothing
     renderer["renewcommand"] = do_nothing
-    renderer["math"] = handle_equation
-    renderer["displaymath"] = handle_equation
-    renderer["eqnarray"] = handle_equation
-    renderer["equation"] = handle_equation
+    #renderer["math"] = handle_equation
+    #renderer["displaymath"] = handle_equation
+    #renderer["eqnarray"] = handle_equation
+    #renderer["equation"] = handle_equation
+    renderer["pleibvdash"] = handle_macro
     renderer.render(document)
 
