@@ -49,10 +49,14 @@ def open_paragraph(node):
 def end_paragraph(node):
     return u"</p>"
 def main(*args):
+    # Determine name of XML output
+    filename_root, ext = os.path.splitext(sys.argv[1])
+    xml_filename = filename_root + ".xml"
+
     # Instantiate a TeX processor and parse the input text
     tex = TeX()
     tex.ownerDocument.config['files']['split-level'] = -100
-    tex.ownerDocument.config['files']['filename'] = 'test.xml'
+    tex.ownerDocument.config['files']['filename'] = xml_filename
 
     with codecs.open(sys.argv[1], "r", encoding="utf-8") as f:
         file_content = f.read()
