@@ -42,6 +42,12 @@ def handle_macro(node):
     import ipdb; ipdb.set_trace
 
 
+def open_paragraph(node):
+    return u"<p>"
+
+
+def end_paragraph(node):
+    return u"</p>"
 def main(*args):
     # Instantiate a TeX processor and parse the input text
     tex = TeX()
@@ -61,6 +67,8 @@ def main(*args):
     renderer["Bfootnote"] = convert
     renderer["Cfootnote"] = convert
     renderer["lemma"] = convert
+    renderer["pstart"] = open_paragraph
+    renderer["pend"] = end_paragraph
     #renderer["includegraphics"] = handle_equation
     renderer["vspace"] = do_nothing
     renderer["renewcommand"] = do_nothing
