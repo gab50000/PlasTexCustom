@@ -48,6 +48,8 @@ def open_paragraph(node):
 
 def end_paragraph(node):
     return u"</p>"
+
+
 def main(*args):
     # Determine name of XML output
     filename_root, ext = os.path.splitext(sys.argv[1])
@@ -80,6 +82,6 @@ def main(*args):
     #renderer["displaymath"] = handle_equation
     #renderer["eqnarray"] = handle_equation
     #renderer["equation"] = handle_equation
-    renderer["pleibvdash"] = handle_macro
+    #renderer["pleibvdash"] = handle_macro
     renderer.render(document)
 

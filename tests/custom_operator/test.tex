@@ -8,6 +8,10 @@
    	\settoheight{\@tempdimb}{$b$}%
 	\protect\includegraphics[width=1.0\@tempdima,height=1.34\@tempdimb]{tex_images/Smiley.png}
 }
+\DeclareRobustCommand\bsmiley{%
+	\settoheight{\@tempdimb}{$b$}% 
+	$\raisebox{-0.2\@tempdimb}[0pt][8pt]{\smiley}\!$
+}
 
 \makeatother
 
