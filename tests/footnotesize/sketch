@@ -1,0 +1,14 @@
+
+
+text1 \footnotesize text2 \node{text3} \node{text4 \normalsize text5} text6 \node{text7}
+
+
+
+-> XML:
+
+<v size="n"> text1 </v>
+<v size=footnote> text2 </v> 
+<node> <v size=f> text3 </v> </node>
+<node> <v size=f> text4 </v> <v size=n> text5 </v>
+<v size=n> text6 </v>
+<node> <v size=n> text7 </v> </node>
