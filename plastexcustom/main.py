@@ -10,7 +10,8 @@ from plasTeX.ConfigManager import ConfigManager
 from plastexcustom import packages
 from custom_renderer import Renderer
 
-sys.path.append(os.path.dirname(packages.__file__))
+custom_package_dir = os.path.dirname(packages.__file__)
+sys.path = [custom_package_dir] + sys.path
 
 c = ConfigManager()
 c.add_section("debugging")
