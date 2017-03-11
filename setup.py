@@ -8,9 +8,10 @@ setup(name='custex',
       license='GPLv3',
       packages=['plastexcustom',
                 'plastexcustom.packages'],
-      install_requires=[],
+      install_requires=["plasTeX",
+                        "nose"],
       entry_points={
-                    'console_scripts': ["custex=plastexcustom.main:main",
+                    'console_scripts': ["tex2xml=plastexcustom.main:main",
                                         "prettify=plastexcustom.make_pretty:main"
                                         ],
       },
