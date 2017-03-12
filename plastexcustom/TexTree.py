@@ -1,19 +1,26 @@
 class Tree:
-    def __init__(self, name, children, height):
-        self.name = name
+    def __init__(self, node, children, height):
+        self.name = node.nodeName
         self.children = children
-        self.width = len(name)
+        self.char_width = len(self.name)  # width of name string
         self.height = height
-        if self.children:
-            self.maxwidth = sum([child.maxwidth for child in self.children])
+        if hasattr(node, "__unicode__"):
+            self.text = node.__unicode__()
         else:
-            self.maxwidth = len(name)
+            self.text = ""
+        if self.children:
+            self.max_char_width = sum([child.max_char_width for child in self.children])
+        else:
+            if self.text:
+                self.max_char_width = len(self.text)
+            else:
+                self.max_char_width = len(self.name)
 
     def __repr__(self):
         repr = []
         rows = self.get_tree_rows()
         for r in reversed(rows):
-            repr.append(" ".join(r).center(self.maxwidth))
+            repr.append(" ".join(r).center(self.max_char_width))
         return "\n".join(repr)
 
     def get_tree_rows(self, rows=None):
@@ -22,7 +29,7 @@ class Tree:
             starting_point = True
         else:
             starting_point = False
-        rows[self.height - 1].append(self.name)
+        rows[self.height - 1].append(self.text if self.text else "<" + self.name + ">")
         if self.children:
             for c in self.children:
                 Tree.get_tree_rows(c, rows)
@@ -39,4 +46,4 @@ def walk_tree(node):
         children = None
         height = 1
 
-    return Tree(node.nodeName, children, height)
+    return Tree(node, children, height)
