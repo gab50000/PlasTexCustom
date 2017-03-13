@@ -17,7 +17,11 @@ class Renderer(Renderer):
             return self.textDefault(node.nodeName)
 
         # Start tag
-        s.append('<%s>' % node.nodeName)
+        if node.hasAttributes() and hasattr(node.attributes, "formatting"):
+            formatting_infos = " ".join(('{}="{}"'.format(k, v) for k, v in node.attributes["formatting"].items()))
+            s.append('<{} {}>'.format(node.nodeName, formatting_infos))
+        else:
+            s.append('<%s>' % node.nodeName)
         # See if we have any attributes to render
         if node.hasAttributes():
             for key, value in node.attributes.items():
