@@ -1,3 +1,4 @@
+# coding=utf-8
 # TODO: Use plastex.Imagers.Imager to generate equation images
 
 import sys
@@ -18,8 +19,18 @@ c.add_section("debugging")
 c["debugging"]["verbose"] = "True"
 
 
+# Hier werden die Funktionen definiert, die das XML Ausgabeformat für jeden Latex-Befehl bestimmen.
+
 def convert(node):
-    return u'<{}>{}</{}>'.format(node.nodeName, unicode(node.attributes["text"]), node.nodeName)
+    """Default Konvertierung.
+    Setzt den Nodenamen (also den Namen des jeweiligen Latexbefehls) in Tags. Dazwischen wird das
+    Text Attribut geschrieben."""
+    if "formatting" in node.attributes:
+        formatting = u", ".join(node.attributes["formatting"])
+    else:
+        formatting = u""
+    return u'<{} formatting="{}">{}</{}>'.format(
+        node.nodeName, formatting, unicode(node.attributes["text"]), node.nodeName)
 
 
 def convert_edtext(node):
@@ -60,20 +71,22 @@ def main(*args):
     tex = TeX()
     tex.ownerDocument.config['files']['split-level'] = -100
     tex.ownerDocument.config['files']['filename'] = xml_filename
+    tex.ownerDocument.config['images']['imager'] = 'gspdfpng'
 
     with codecs.open(sys.argv[1], "r", encoding="utf-8") as f:
         file_content = f.read()
 
+    import ipdb; ipdb.set_trace()
     tex.input(file_content)
     document = tex.parse()
 
     # Render the document
     renderer = Renderer()
     renderer["edtext"] = convert_edtext
-    renderer["Afootnote"] = convert
-    renderer["Bfootnote"] = convert
-    renderer["Cfootnote"] = convert
-    renderer["lemma"] = convert
+#    renderer["Afootnote"] = convert
+#    renderer["Bfootnote"] = convert
+#    renderer["Cfootnote"] = convert
+#    renderer["lemma"] = convert
     renderer["pstart"] = open_paragraph
     renderer["pend"] = end_paragraph
     #renderer["includegraphics"] = handle_equation
