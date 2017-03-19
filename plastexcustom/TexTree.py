@@ -1,9 +1,23 @@
+import codecs
+import os
+import sys
+
+from plasTeX.TeX import TeX
+
+from plastexcustom import packages
+
+
+custom_package_dir = os.path.dirname(packages.__file__)
+sys.path = [custom_package_dir] + sys.path
+
+
 class Tree:
-    def __init__(self, node, children, height):
+    def __init__(self, node, children, height, print_text=False):
         self.name = node.nodeName
         self.children = children
         self.char_width = len(self.name)  # width of name string
         self.height = height
+        self.print_text = print_text
         if hasattr(node, "__unicode__"):
             self.text = node.__unicode__()
         else:
@@ -38,12 +52,45 @@ class Tree:
             return rows
 
 
+def print_tree(node, level=0):
+    print 4 * level * " ", node.name
+    for child in node.children:
+        print_tree(child, level=level+1)
+    print ""
+
+
+def print_node(node, level=0):
+    print 4 * level * " ", node.nodeName
+    for child in node.childNodes:
+        print_node(child, level=level+1)
+    print ""
+
+
 def walk_tree(node):
     if node.hasChildNodes():
         children = [walk_tree(child) for child in node.childNodes]
         height = max((c.height for c in children)) + 1
     else:
-        children = None
+        children = []
         height = 1
 
     return Tree(node, children, height)
+
+
+def main():
+    # Determine name of XML output
+    filename_root, ext = os.path.splitext(sys.argv[1])
+    xml_filename = filename_root + ".xml"
+
+    # Instantiate a TeX processor and parse the input text
+    tex = TeX()
+    tex.ownerDocument.config['files']['split-level'] = -100
+    tex.ownerDocument.config['files']['filename'] = xml_filename
+    tex.ownerDocument.config['images']['imager'] = 'gspdfpng'
+
+    with codecs.open(sys.argv[1], "r", encoding="utf-8") as f:
+        file_content = f.read()
+
+    tex.input(file_content)
+    document = tex.parse()
+    import ipdb; ipdb.set_trace()
