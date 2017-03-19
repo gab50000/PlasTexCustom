@@ -1,29 +1,11 @@
 from plasTeX import Base
 
 
-def has_formatting(node):
-    return hasattr(node.attributes, "formatting")
-
-
 class Environment(Base.Environment):
-    def digest(self, tokens):
-        Base.Environment.digest(self, tokens)
-        parent = self.parentNode
-        while parent:
-            if has_formatting(parent):
-                self.attributes["formatting"].update(self.parentNode.attributes["formatting"])
-                break
-            else:
-                parent = parent.parentNode
+    def invoke(self, tex):
+        Base.Environment.invoke(self, tex)
 
 
 class Command(Base.Command):
-    def digest(self, tokens):
-        Base.Command.digest(self, tokens)
-        parent = self.parentNode
-        while parent:
-            if has_formatting(parent):
-                self.attributes["formatting"].update(self.parentNode.attributes["formatting"])
-                break
-            else:
-                parent = parent.parentNode
+    def invoke(self, tex):
+        Base.Command.invoke(self, tex)
