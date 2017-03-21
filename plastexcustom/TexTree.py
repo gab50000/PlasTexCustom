@@ -13,6 +13,7 @@ sys.path = [custom_package_dir] + sys.path
 
 class Tree:
     def __init__(self, node, children, height, print_text=False):
+        self.node = node
         self.name = node.nodeName
         self.children = children
         self.char_width = len(self.name)  # width of name string
@@ -36,6 +37,13 @@ class Tree:
         for r in reversed(rows):
             repr.append(" ".join(r).center(self.max_char_width))
         return "\n".join(repr)
+
+    def __getattr__(self, item):
+        if not hasattr(self, item):
+            return getattr(self.node, item)
+
+    def __getitem__(self, item):
+        return self.node.__getitem__(item)
 
     def get_tree_rows(self, rows=None):
         if not rows:
