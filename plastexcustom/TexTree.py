@@ -85,6 +85,13 @@ def walk_tree(node):
     return Tree(node, children, height)
 
 
+def get_parents(node):
+    if node.parentNode is not None:
+        return [node.parentNode] + get_parents(node.parentNode)
+    else:
+        return []
+
+
 def main():
     # Determine name of XML output
     filename_root, ext = os.path.splitext(sys.argv[1])
