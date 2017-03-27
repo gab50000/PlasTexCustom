@@ -10,6 +10,7 @@ from plasTeX.ConfigManager import ConfigManager
 
 from plastexcustom import packages
 from custom_renderer import Renderer
+from TexTree import walk_tree, print_tree, print_node, get_parents
 
 custom_package_dir = os.path.dirname(packages.__file__)
 sys.path = [custom_package_dir] + sys.path
@@ -76,7 +77,6 @@ def main(*args):
     with codecs.open(sys.argv[1], "r", encoding="utf-8") as f:
         file_content = f.read()
 
-    import ipdb; ipdb.set_trace()
     tex.input(file_content)
     document = tex.parse()
 
