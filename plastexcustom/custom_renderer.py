@@ -24,7 +24,9 @@ class Renderer(Renderer):
 
         parents = get_parents(node)
         style = find_formatter_class(parents)
-        if style:
+
+        # Do not add style to bgroups
+        if style and node.nodeName != "bgroup":
             s.append('<{} size="{}">'.format(node.nodeName, style))
         else:
             s.append('<%s>' % node.nodeName)

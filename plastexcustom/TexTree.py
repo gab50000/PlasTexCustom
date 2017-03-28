@@ -99,6 +99,10 @@ def find_formatter_class(parents_list):
     style = []
     for parent in parents_list:
         parent_name = parent.__class__.__name__
+        # If a bgroup is encountered (i.e. a bracketed expression {...}), forget all styles from
+        # before
+        if parent_name == "bgroup":
+            style = []
         if parent_name in formatters:
             style.append(parent_name)
     return " ".join(style)
