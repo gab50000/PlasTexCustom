@@ -94,14 +94,14 @@ def get_parents(node):
 
 def find_formatter_class(parents_list):
     formatters = {"tiny", "scriptsize", "footnotesize", "small", "normalsize",
-                  "large", "Large", "LARGE", "huge", "Huge"}
+                  "large", "Large", "LARGE", "huge", "Huge", "it"}
 
-    style = None
+    style = []
     for parent in parents_list:
         parent_name = parent.__class__.__name__
         if parent_name in formatters:
-            style = parent_name
-    return style
+            style.append(parent_name)
+    return " ".join(style)
 
 
 def main():
