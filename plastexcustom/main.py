@@ -10,7 +10,7 @@ from plasTeX.ConfigManager import ConfigManager
 
 from plastexcustom import packages
 from custom_renderer import Renderer
-from TexTree import walk_tree, print_tree, print_node, get_parents
+from TexTree import walk_tree, print_tree, print_node, get_parents, find_formatter_class
 
 custom_package_dir = os.path.dirname(packages.__file__)
 sys.path = [custom_package_dir] + sys.path
