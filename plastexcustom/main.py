@@ -45,6 +45,10 @@ def handle_macro(node):
 
 
 def open_paragraph(node):
+    parents = get_parents(node)
+    style = find_formatter_class(parents)
+    if style:
+        return u'<p size="{}">'.format(style)
     return u"<p>"
 
 
