@@ -22,17 +22,6 @@ c["debugging"]["verbose"] = "True"
 
 # Hier werden die Funktionen definiert, die das XML Ausgabeformat für jeden Latex-Befehl bestimmen.
 
-def convert(node):
-    """Default Konvertierung.
-    Setzt den Nodenamen (also den Namen des jeweiligen Latexbefehls) in Tags. Dazwischen wird das
-    Text Attribut geschrieben."""
-    if "formatting" in node.attributes:
-        formatting = u", ".join(node.attributes["formatting"])
-    else:
-        formatting = u""
-    return u'<{} formatting="{}">{}</{}>'.format(
-        node.nodeName, formatting, unicode(node.attributes["text"]), node.nodeName)
-
 
 def convert_edtext(node):
     return u'<edtext><text>{}</text><app>{}</app></edtext>'.format(
