@@ -7,4 +7,5 @@
 !*.zpts
 !plastexcustom/
 !tests/
+!docs/
 build

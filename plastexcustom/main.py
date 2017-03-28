@@ -26,6 +26,8 @@ c["debugging"]["verbose"] = "True"
 
 
 def convert_edtext(node):
+    """Rendert das edtext Kommando in der Form 
+    <edtext><text> ... </text><app> ... </app></edtext>"""
     return u'<edtext><text>{}</text><app>{}</app></edtext>'.format(
         unicode(node.attributes["text"]), unicode(node.attributes["content"]))
 
