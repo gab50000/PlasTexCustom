@@ -92,6 +92,18 @@ def get_parents(node):
         return []
 
 
+def find_formatter_class(parents_list):
+    formatters = {"tiny", "scriptsize", "footnotesize", "small", "normalsize",
+                  "large", "Large", "LARGE", "huge", "Huge"}
+
+    style = None
+    for parent in parents_list:
+        parent_name = parent.__class__.__name__
+        if parent_name in formatters:
+            style = parent_name
+    return style
+
+
 def main():
     # Determine name of XML output
     filename_root, ext = os.path.splitext(sys.argv[1])
