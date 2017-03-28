@@ -8,6 +8,8 @@ import codecs
 from plasTeX.TeX import TeX
 from plasTeX.ConfigManager import ConfigManager
 
+from lxml import etree
+
 from plastexcustom import packages
 from custom_renderer import Renderer
 from TexTree import walk_tree, print_tree, print_node, get_parents, find_formatter_class
@@ -56,6 +58,10 @@ def end_paragraph(node):
     return u"</p>"
 
 
+def textsize(node):
+    return u'<v size="{}">{}</v>'.format(node.nodeName, unicode(node))
+
+
 def main(*args):
     # Determine name of XML output
     filename_root, ext = os.path.splitext(sys.argv[1])
@@ -75,6 +81,18 @@ def main(*args):
 
     # Render the document
     renderer = Renderer()
+
+    #renderer["tiny"] = textsize
+    #renderer["scriptsize"] = textsize
+    #renderer["footnotesize"] = textsize
+    #renderer["small"] = textsize
+    #renderer["normalsize"] = textsize
+    #renderer["large"] = textsize
+    #renderer["Large"] = textsize
+    #renderer["LARGE"] = textsize
+    #renderer["huge"] = textsize
+    #renderer["Huge"] = textsize
+
     renderer["edtext"] = convert_edtext
 #    renderer["Afootnote"] = convert
 #    renderer["Bfootnote"] = convert
@@ -91,4 +109,9 @@ def main(*args):
     #renderer["equation"] = handle_equation
     #renderer["pleibvdash"] = handle_macro
     renderer.render(document)
+
+    # Make XML pretty
+    parser = etree.XMLParser(remove_blank_text=False)
+    tree = etree.parse(xml_filename, parser)
+    tree.write(xml_filename, pretty_print=True)
 
