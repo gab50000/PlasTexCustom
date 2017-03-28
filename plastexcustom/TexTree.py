@@ -87,7 +87,7 @@ def walk_tree(node):
 
 def get_parents(node):
     if node.parentNode is not None:
-        return [node.parentNode] + get_parents(node.parentNode)
+        return  get_parents(node.parentNode) + [node.parentNode]
     else:
         return []
 
