@@ -1,6 +1,8 @@
 import string
 from plasTeX.Renderers import Renderer
 
+from plastexcustom.TexTree import find_formatter_class, get_parents
+
 
 class Renderer(Renderer):
 
@@ -17,9 +19,13 @@ class Renderer(Renderer):
             return self.textDefault(node.nodeName)
 
         # Start tag
-        if node.hasAttributes() and hasattr(node.attributes, "formatting"):
-            formatting_infos = " ".join(('{}="{}"'.format(k, v) for k, v in node.attributes["formatting"].items()))
-            s.append('<{} {}>'.format(node.nodeName, formatting_infos))
+
+        # Find parents and check for formatting
+
+        parents = get_parents(node)
+        style = find_formatter_class(parents)
+        if style:
+            s.append('<{} size="{}">'.format(node.nodeName, style))
         else:
             s.append('<%s>' % node.nodeName)
         # See if we have any attributes to render
