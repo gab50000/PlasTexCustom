@@ -1,5 +1,6 @@
 # coding=utf-8
-# TODO: Use plastex.Imagers.Imager to generate equation images
+"""Hauptskript, das zuerst den Parser aufruft, und anschließend den Dokumentenbaum mithilfe des
+custom_renderers sowie der hier definierten Funktionen rendert."""
 
 import sys
 import os
@@ -24,7 +25,6 @@ c["debugging"]["verbose"] = "True"
 
 # Hier werden die Funktionen definiert, die das XML Ausgabeformat für jeden Latex-Befehl bestimmen.
 
-
 def convert_edtext(node):
     """Rendert das edtext Kommando in der Form 
     <edtext><text> ... </text><app> ... </app></edtext>"""
@@ -33,6 +33,8 @@ def convert_edtext(node):
 
 
 def do_nothing(node):
+    """Diese Funktion gibt einen leeren (Unicode-) String zurück.
+    Kann benutzt werden, um unnötige Elemente aus der XML-Datei zu entfernen."""
     return u''
 
 
