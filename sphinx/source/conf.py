@@ -63,7 +63,7 @@ author = u'Gabriel Kabbe'
 # built documents.
 #
 # The short X.Y version.
-version = u'2.7.13'
+version = u'0.1a'
 # The full version, including alpha/beta/rc tags.
 release = u'0.1a'
 
