@@ -16,13 +16,14 @@ from custom_renderer import Renderer
 from TexTree import walk_tree, print_tree, print_node, get_parents, find_formatter_class
 
 custom_package_dir = os.path.dirname(packages.__file__)
-sys.path = [custom_package_dir] + sys.path
+sys.path.insert(0, custom_package_dir)
 
 c = ConfigManager()
 c.add_section("debugging")
 c["debugging"]["verbose"] = "True"
 
 
+#---------------------------------------------------------------------------------------------------
 # Hier werden die Funktionen definiert, die das XML Ausgabeformat für jeden Latex-Befehl bestimmen.
 
 def convert_edtext(node):
@@ -34,7 +35,7 @@ def convert_edtext(node):
 
 def do_nothing(node):
     """Diese Funktion gibt einen leeren (Unicode-) String zurück.
-    Kann benutzt werden, um unnötige Elemente aus der XML-Datei zu entfernen."""
+    Kann benutzt werden, um zu verhindern, dass unnötige Elemente in der XML-Datei auftauchen."""
     return u''
 
 
@@ -43,14 +44,15 @@ def convert_graphics(node):
 
 
 def handle_equation(node):
-    return u'<formula>{}</formula>'.format(node.image.url)
-
-
-def handle_macro(node):
-    import ipdb; ipdb.set_trace
+    """Funktion, um Mathe-Umgebungen umzuwandeln. 
+    Im <src> Tag wird die Original Latex-Formel angezeigt, während <imgpath> den Pfad zum erstellten
+    Formelbild enthält"""
+    return u'<formula><src>{}</src> <imgpath>{}</imgpath></formula>'.format(node.source,
+                                                                            node.image.url)
 
 
 def open_paragraph(node):
+    """Öffnet einen Paragraphen mittels <p>"""
     parents = get_parents(node)
     style = find_formatter_class(parents)
     if style:
@@ -59,11 +61,14 @@ def open_paragraph(node):
 
 
 def end_paragraph(node):
+    """Schließt einen Paragraphen mittels </p>"""
     return u"</p>"
 
 
 def textsize(node):
     return u'<v size="{}">{}</v>'.format(node.nodeName, unicode(node))
+
+#---------------------------------------------------------------------------------------------------
 
 
 def main(*args):
@@ -107,10 +112,10 @@ def main(*args):
     #renderer["includegraphics"] = handle_equation
     renderer["vspace"] = do_nothing
     renderer["renewcommand"] = do_nothing
-    #renderer["math"] = handle_equation
-    #renderer["displaymath"] = handle_equation
-    #renderer["eqnarray"] = handle_equation
-    #renderer["equation"] = handle_equation
+    renderer["math"] = handle_equation
+    renderer["displaymath"] = handle_equation
+    renderer["eqnarray"] = handle_equation
+    renderer["equation"] = handle_equation
     #renderer["pleibvdash"] = handle_macro
     renderer.render(document)
 
