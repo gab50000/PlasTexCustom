@@ -22,14 +22,8 @@ class Renderer(Renderer):
 
         # Find parents and check for formatting
 
-        parents = get_parents(node)
-        style = find_formatter_class(parents)
 
-        # Do not add style to bgroups
-        if style and node.nodeName != "bgroup":
-            s.append('<{} size="{}">'.format(node.nodeName, style))
-        else:
-            s.append('<%s>' % node.nodeName)
+        s.append('<%s>' % node.nodeName)
         # See if we have any attributes to render
         if node.hasAttributes():
             for key, value in node.attributes.items():
