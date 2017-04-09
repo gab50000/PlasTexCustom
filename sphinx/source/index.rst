@@ -11,9 +11,9 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-
-Einführung
-==========
+   Installation
+   Benutzung
+   Anpassung
 
 
 

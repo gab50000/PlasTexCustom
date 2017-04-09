@@ -59,6 +59,14 @@ plastexcustom.make_pretty module
     :undoc-members:
     :show-inheritance:
 
+plastexcustom.make_test module
+------------------------------
+
+.. automodule:: plastexcustom.make_test
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 
 Module contents
 ---------------
