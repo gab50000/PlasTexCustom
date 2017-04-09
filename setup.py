@@ -13,7 +13,8 @@ setup(name='custex',
       entry_points={
                     'console_scripts': ["tex2xml=plastexcustom.main:main",
                                         "prettify=plastexcustom.make_pretty:main",
-                                        "treeview=plastexcustom.TexTree:main"
+                                        "treeview=plastexcustom.TexTree:main",
+                                        "mktest=plastexcustom.make_test:main"
                                         ],
       },
       zip_safe=False)
