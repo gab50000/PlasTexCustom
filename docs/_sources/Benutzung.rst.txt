@@ -1,0 +1,5 @@
+Benutzung
+=========
+
+Nach der Installation sollte in der Kommandozeile der Befehl tex2xml verfügbar sein.
+

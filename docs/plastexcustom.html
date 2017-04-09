@@ -148,7 +148,7 @@
 <span id="plastexcustom-custom-renderer-module"></span><h2>plastexcustom.custom_renderer module<a class="headerlink" href="#module-plastexcustom.custom_renderer" title="Link zu dieser Überschrift">¶</a></h2>
 <dl class="class">
 <dt id="plastexcustom.custom_renderer.Renderer">
-<em class="property">class </em><code class="descclassname">plastexcustom.custom_renderer.</code><code class="descname">Renderer</code><span class="sig-paren">(</span><em>data={}</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.custom_renderer.Renderer" title="Link zu dieser Definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">plastexcustom.custom_renderer.</code><code class="descname">Renderer</code><span class="sig-paren">(</span><em>data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.custom_renderer.Renderer" title="Link zu dieser Definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">plasTeX.Renderers.Renderer</span></code></p>
 <dl class="method">
 <dt id="plastexcustom.custom_renderer.Renderer.default">
@@ -182,6 +182,13 @@ custom_renderers sowie der hier definierten Funktionen rendert.</p>
 <dd></dd></dl>
 
 <dl class="function">
+<dt id="plastexcustom.main.do_not_write_tags">
+<code class="descclassname">plastexcustom.main.</code><code class="descname">do_not_write_tags</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.main.do_not_write_tags" title="Link zu dieser Definition">¶</a></dt>
+<dd><p>Schreibt den Inhalt des aktuellen Environments/Befehls nach XML, aber erzeugt keine Tags
+dafür</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="plastexcustom.main.do_nothing">
 <code class="descclassname">plastexcustom.main.</code><code class="descname">do_nothing</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.main.do_nothing" title="Link zu dieser Definition">¶</a></dt>
 <dd><p>Diese Funktion gibt einen leeren (Unicode-) String zurück.
@@ -195,11 +202,18 @@ Kann benutzt werden, um zu verhindern, dass unnötige Elemente in der XML-Datei 
 </dd></dl>
 
 <dl class="function">
-<dt id="plastexcustom.main.handle_equation">
-<code class="descclassname">plastexcustom.main.</code><code class="descname">handle_equation</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.main.handle_equation" title="Link zu dieser Definition">¶</a></dt>
+<dt id="plastexcustom.main.equation_as_latexsrc">
+<code class="descclassname">plastexcustom.main.</code><code class="descname">equation_as_latexsrc</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.main.equation_as_latexsrc" title="Link zu dieser Definition">¶</a></dt>
+<dd><p>Wie equation_as_latexsrc_with_image, aber ohne &lt;imgpath&gt;...&lt;/imgpath&gt;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="plastexcustom.main.equation_as_latexsrc_with_image">
+<code class="descclassname">plastexcustom.main.</code><code class="descname">equation_as_latexsrc_with_image</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.main.equation_as_latexsrc_with_image" title="Link zu dieser Definition">¶</a></dt>
 <dd><p>Funktion, um Mathe-Umgebungen umzuwandeln.
 Im &lt;src&gt; Tag wird die Original Latex-Formel angezeigt, während &lt;imgpath&gt; den Pfad zum erstellten
-Formelbild enthält</p>
+Formelbild enthält.
+Anmerkung: Bilder werden nicht erstellt. Plastex-Bug?</p>
 </dd></dl>
 
 <dl class="function">
@@ -227,6 +241,15 @@ Formelbild enthält</p>
 <dd></dd></dl>
 
 </div>
+<div class="section" id="module-plastexcustom.make_test">
+<span id="plastexcustom-make-test-module"></span><h2>plastexcustom.make_test module<a class="headerlink" href="#module-plastexcustom.make_test" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Erstellt ein simples Tex-File mit Fülltext.</p>
+<dl class="function">
+<dt id="plastexcustom.make_test.main">
+<code class="descclassname">plastexcustom.make_test.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.make_test.main" title="Link zu dieser Definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
 <div class="section" id="module-plastexcustom">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-plastexcustom" title="Link zu dieser Überschrift">¶</a></h2>
 </div>
@@ -249,6 +272,7 @@ Formelbild enthält</p>
 <li><a class="reference internal" href="#module-plastexcustom.custom_renderer">plastexcustom.custom_renderer module</a></li>
 <li><a class="reference internal" href="#module-plastexcustom.main">plastexcustom.main module</a></li>
 <li><a class="reference internal" href="#module-plastexcustom.make_pretty">plastexcustom.make_pretty module</a></li>
+<li><a class="reference internal" href="#module-plastexcustom.make_test">plastexcustom.make_test module</a></li>
 <li><a class="reference internal" href="#module-plastexcustom">Module contents</a></li>
 </ul>
 </li>
