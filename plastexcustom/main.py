@@ -10,6 +10,7 @@ from plasTeX.TeX import TeX
 from plasTeX.ConfigManager import ConfigManager
 
 from lxml import etree
+from xml.sax.saxutils import escape, unescape
 
 from plastexcustom import packages
 from custom_renderer import Renderer
@@ -39,16 +40,30 @@ def do_nothing(node):
     return u''
 
 
+def do_not_write_tags(node):
+    """Schreibt den Inhalt des aktuellen Environments/Befehls nach XML, aber erzeugt keine Tags
+    dafür"""
+    return unicode(node)
+
+
 def convert_graphics(node):
-    return u"<graphics>\n<file>\n{}\n</file>\n</graphics>".format(node.attributes["file"])
+    return u"<graphics>\n<file>\n{}\n</file>\n</graphics>".format(unicode(node.attributes["file"]))
 
 
-def handle_equation(node):
+def equation_as_latexsrc_with_image(node):
     """Funktion, um Mathe-Umgebungen umzuwandeln. 
     Im <src> Tag wird die Original Latex-Formel angezeigt, während <imgpath> den Pfad zum erstellten
-    Formelbild enthält"""
-    return u'<formula><src>{}</src> <imgpath>{}</imgpath></formula>'.format(node.source,
-                                                                            node.image.url)
+    Formelbild enthält.
+    Anmerkung: Bilder werden nicht erstellt. Plastex-Bug?"""
+    src_content = escape(unicode(node.source))
+    img_path = escape(unicode(node.image.url))
+    return u'<formula><src>{}</src> <imgpath>{}</imgpath></formula>'.format(src_content, img_path)
+
+
+def equation_as_latexsrc(node):
+    """Wie equation_as_latexsrc_with_image, aber ohne <imgpath>...</imgpath>"""
+    src_content = escape(unicode(node.source))
+    return u'<formula><src>"{}"</src></formula>'.format(src_content)
 
 
 def open_paragraph(node):
@@ -68,6 +83,7 @@ def end_paragraph(node):
 def textsize(node):
     return u'<v size="{}">{}</v>'.format(node.nodeName, unicode(node))
 
+
 #---------------------------------------------------------------------------------------------------
 
 
@@ -81,6 +97,7 @@ def main(*args):
     tex.ownerDocument.config['files']['split-level'] = -100
     tex.ownerDocument.config['files']['filename'] = xml_filename
     tex.ownerDocument.config['images']['imager'] = 'gspdfpng'
+    tex.ownerDocument.config['images']['filenames'] = 'xmlimages/img-$num(4)'
 
     with codecs.open(sys.argv[1], "r", encoding="utf-8") as f:
         file_content = f.read()
@@ -88,35 +105,32 @@ def main(*args):
     tex.input(file_content)
     document = tex.parse()
 
-    # Render the document
     renderer = Renderer()
 
-    #renderer["tiny"] = textsize
-    #renderer["scriptsize"] = textsize
-    #renderer["footnotesize"] = textsize
-    #renderer["small"] = textsize
-    #renderer["normalsize"] = textsize
-    #renderer["large"] = textsize
-    #renderer["Large"] = textsize
-    #renderer["LARGE"] = textsize
-    #renderer["huge"] = textsize
-    #renderer["Huge"] = textsize
+    textsizes = ["tiny", "scriptsize", "footnotesize", "small", "normalsize", "large", "Large",
+                 "LARGE", "huge", "Huge"]
+
+    for ts in textsizes:
+        renderer[ts] = do_not_write_tags
+
+    # Alle Latex-Befehle, die in der folgenden Liste stehen, werden nicht ins XML-Dokument
+    # geschrieben
+    # Bei Bedarf ergänzen!
+
+    to_be_ignored = ["vspace", "renewcommand", "pstart", "pend"]
+    for tbi in to_be_ignored:
+        renderer[tbi] = do_nothing
+
+    # Alle Formelbefehle und Environments kommen in die folgende Liste
+
+    math_envs = ["math", "displaymath", "eqnarray", "equation"]
+    for me in math_envs:
+        renderer[me] = equation_as_latexsrc_with_image
 
     renderer["edtext"] = convert_edtext
-#    renderer["Afootnote"] = convert
-#    renderer["Bfootnote"] = convert
-#    renderer["Cfootnote"] = convert
-#    renderer["lemma"] = convert
-    renderer["pstart"] = open_paragraph
-    renderer["pend"] = end_paragraph
-    #renderer["includegraphics"] = handle_equation
-    renderer["vspace"] = do_nothing
-    renderer["renewcommand"] = do_nothing
-    renderer["math"] = handle_equation
-    renderer["displaymath"] = handle_equation
-    renderer["eqnarray"] = handle_equation
-    renderer["equation"] = handle_equation
-    #renderer["pleibvdash"] = handle_macro
+    renderer["includegraphics"] = convert_graphics
+
+    # Render the document
     renderer.render(document)
 
     # Make XML pretty
