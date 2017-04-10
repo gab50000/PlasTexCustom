@@ -56,7 +56,9 @@ den Namen des jeweiligen Latex-Pakets hat und die Endung &#8221;.py&#8221;.</p>
 <p>Innerhalb dieser Datei wird nun für jeden Befehl bzw. jede Umgebung eine
 Klasse angelegt. Beispielsweise sieht die Klasse für edtext aus dem
 Paket ledmac folgendermaßen aus:</p>
-<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">edtext</span><span class="p">(</span><span class="n">Base</span><span class="o">.</span><span class="n">Command</span><span class="p">):</span>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">plasTeX</span> <span class="k">import</span> <span class="n">Base</span>
+
+<span class="k">class</span> <span class="nc">edtext</span><span class="p">(</span><span class="n">Base</span><span class="o">.</span><span class="n">Command</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;\edtext{text}{content}&quot;&quot;&quot;</span>
     <span class="n">args</span> <span class="o">=</span> <span class="s1">&#39;text content&#39;</span>
 </pre></div>

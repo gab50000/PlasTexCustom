@@ -15,6 +15,8 @@ Innerhalb dieser Datei wird nun für jeden Befehl bzw. jede Umgebung eine Klasse
 Beispielsweise sieht die Klasse für edtext aus dem Paket ledmac folgendermaßen aus:
 
 ```python
+from plasTeX import Base
+
 class edtext(Base.Command):
     """\edtext{text}{content}"""
     args = 'text content'

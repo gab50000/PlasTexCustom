@@ -19,6 +19,8 @@ Paket ledmac folgendermaßen aus:
 
 .. code:: python
 
+    from plasTeX import Base
+
     class edtext(Base.Command):
         """\edtext{text}{content}"""
         args = 'text content'
