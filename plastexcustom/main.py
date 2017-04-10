@@ -125,7 +125,7 @@ def main(*args):
 
     math_envs = ["math", "displaymath", "eqnarray", "equation"]
     for me in math_envs:
-        renderer[me] = equation_as_latexsrc_with_image
+        renderer[me] = equation_as_latexsrc
 
     renderer["edtext"] = convert_edtext
     renderer["includegraphics"] = convert_graphics
