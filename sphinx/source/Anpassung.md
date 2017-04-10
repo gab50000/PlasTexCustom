@@ -26,3 +26,15 @@ So erfährt PlasTeX, dass dieser Befehl zwei Argumente benötigt.
 
 Wäre eines der Argumente in Latex optional, müsste es im args String in Klammern ("()" oder "[]")
 gesetzt werden.
+
+Die Namen der Argumente innerhalb des args Strings sind frei wählbar. Im schließlich geparsten
+Dokument sind sie im entsprechenden Knoten des Dokumentenbaums im "attributes" Dictionary zu finden.
+
+Die Argumente eines Knoten vom Typ edtext könnte man beispielweise per
+
+```python
+text = node.attributes["text"]
+content = node.attributes["content"]
+```
+
+abrufen.

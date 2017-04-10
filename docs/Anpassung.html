@@ -67,6 +67,15 @@ Variable args, die aus einem String bestehend aus zwei Wörtern besteht.
 So erfährt PlasTeX, dass dieser Befehl zwei Argumente benötigt.</p>
 <p>Wäre eines der Argumente in Latex optional, müsste es im args String in
 Klammern (&#8220;()&#8221; oder &#8220;[]&#8221;) gesetzt werden.</p>
+<p>Die Namen der Argumente innerhalb des args Strings sind frei wählbar. Im
+schließlich geparsten Dokument sind sie im entsprechenden Knoten des
+Dokumentenbaums im &#8220;attributes&#8221; Dictionary zu finden.</p>
+<p>Die Argumente eines Knoten vom Typ edtext könnte man beispielweise per</p>
+<div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span>
+<span class="n">content</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="s2">&quot;content&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>abrufen.</p>
 </div>
 </div>
 
