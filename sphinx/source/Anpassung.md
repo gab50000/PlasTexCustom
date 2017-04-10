@@ -74,7 +74,7 @@ def convert_edtext(node):
 
 Nun muss man nur noch dem Renderer mitteilen, dass man statt der Default-Funktion die neue Funktion
 zum Rendern benutzen möchte.
-Dies tut man mittels
+Dies tut man in der Datei plastexcustom/main.py in der main-Funktion mittels
 
 ```python
 renderer["edtext"] = convert_edtext
