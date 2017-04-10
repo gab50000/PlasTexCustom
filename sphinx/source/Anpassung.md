@@ -3,6 +3,8 @@
 Die zwei Hauptfunktionen von PlasTeX sind das Parsen und das Rendern
 Beides kann nach Bedarf angepasst werden.
 
+Siehe hierzu auch https://tiarno.github.io/plastex/plastex/plastex.pdf
+
 ## Parsen
 
 Um PlasTeX die Regeln zum Parsen eines Latex-Befehls zu vermitteln, muss im Ordner 
@@ -38,3 +40,42 @@ content = node.attributes["content"]
 ```
 
 abrufen.
+
+
+## Rendern
+
+Beim Rendern geht es nur noch darum, in welcher Form die geparsten Informationen aus dem Latex-Dokument
+dargestellt werden.
+
+Der XML-Renderer ist zu finden unter plastexcustom/custom_renderer.py
+Er rendert jeden Node aus dem von Plastex erstellten Dokumentenbaum, indem er das Attribut
+"nodeName" in spitze Klammern setzt.
+
+Hat man den Renderer mittels
+
+```python
+renderer = Renderer()
+```
+
+erzeugt, kann man nun auch Renderfunktionen für bestimmte Befehle nachträglich anpassen.
+Dies geschieht, indem man in plastexcustom/main.py zuerst eine neue Renderfunktion definiert.
+
+Diese Renderfunktion muss genau einen Parameter entgegennehmen können (nämlich einen Knoten aus dem
+Plastex-Dokumentenbaum), und einen unicode-String zurückgeben.
+Um bei dem edtext-Beispiel zu bleiben:
+
+```python
+def convert_edtext(node):
+    """Rendert das edtext Kommando in der Form 
+    <edtext><text> ... </text><app> ... </app></edtext>"""
+    return u'<edtext><text>{}</text><app>{}</app></edtext>'.format(
+        unicode(node.attributes["text"]), unicode(node.attributes["content"]))
+```
+
+Nun muss man nur noch dem Renderer mitteilen, dass man statt der Default-Funktion die neue Funktion
+zum Rendern benutzen möchte.
+Dies tut man mittels
+
+```python
+renderer["edtext"] = convert_edtext
+```
