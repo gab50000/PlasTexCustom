@@ -17,8 +17,7 @@
         VERSION:     '0.1a',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
+        HAS_SOURCE:  true
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
@@ -27,9 +26,9 @@
     <script type="text/javascript" src="_static/translations.js"></script>
     <link rel="index" title="Stichwortverzeichnis" href="genindex.html" />
     <link rel="search" title="Suche" href="search.html" />
+    <link rel="top" title="PlasTeXCustom 0.1a Dokumentation" href="index.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -50,10 +49,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="plastexcustom.packages.html">plastexcustom.packages package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="plastexcustom.packages.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plastexcustom.packages.html#module-plastexcustom.packages.amsmath">plastexcustom.packages.amsmath module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plastexcustom.packages.html#module-plastexcustom.packages.ledmac">plastexcustom.packages.ledmac module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plastexcustom.packages.html#module-plastexcustom.packages.scrbook">plastexcustom.packages.scrbook module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="plastexcustom.packages.html#module-plastexcustom.packages">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plastexcustom.packages.html#plastexcustom-packages-amsmath-module">plastexcustom.packages.amsmath module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plastexcustom.packages.html#plastexcustom-packages-ledmac-module">plastexcustom.packages.ledmac module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plastexcustom.packages.html#plastexcustom-packages-scrbook-module">plastexcustom.packages.scrbook module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plastexcustom.packages.html#module-contents">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -62,196 +61,29 @@
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Link zu dieser Überschrift">¶</a></h2>
 </div>
-<div class="section" id="module-plastexcustom.CustomBase">
-<span id="plastexcustom-custombase-module"></span><h2>plastexcustom.CustomBase module<a class="headerlink" href="#module-plastexcustom.CustomBase" title="Link zu dieser Überschrift">¶</a></h2>
-<dl class="class">
-<dt id="plastexcustom.CustomBase.Command">
-<em class="property">class </em><code class="descclassname">plastexcustom.CustomBase.</code><code class="descname">Command</code><a class="headerlink" href="#plastexcustom.CustomBase.Command" title="Link zu dieser Definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">plasTeX.Command</span></code></p>
-<dl class="method">
-<dt id="plastexcustom.CustomBase.Command.invoke">
-<code class="descname">invoke</code><span class="sig-paren">(</span><em>tex</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.CustomBase.Command.invoke" title="Link zu dieser Definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="plastexcustom.CustomBase.Environment">
-<em class="property">class </em><code class="descclassname">plastexcustom.CustomBase.</code><code class="descname">Environment</code><a class="headerlink" href="#plastexcustom.CustomBase.Environment" title="Link zu dieser Definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">plasTeX.Environment</span></code></p>
-<dl class="method">
-<dt id="plastexcustom.CustomBase.Environment.invoke">
-<code class="descname">invoke</code><span class="sig-paren">(</span><em>tex</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.CustomBase.Environment.invoke" title="Link zu dieser Definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<div class="section" id="plastexcustom-custombase-module">
+<h2>plastexcustom.CustomBase module<a class="headerlink" href="#plastexcustom-custombase-module" title="Link zu dieser Überschrift">¶</a></h2>
 </div>
-<div class="section" id="module-plastexcustom.TexTree">
-<span id="plastexcustom-textree-module"></span><h2>plastexcustom.TexTree module<a class="headerlink" href="#module-plastexcustom.TexTree" title="Link zu dieser Überschrift">¶</a></h2>
-<dl class="class">
-<dt id="plastexcustom.TexTree.Tree">
-<em class="property">class </em><code class="descclassname">plastexcustom.TexTree.</code><code class="descname">Tree</code><span class="sig-paren">(</span><em>node</em>, <em>children</em>, <em>height</em>, <em>print_text=False</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.TexTree.Tree" title="Link zu dieser Definition">¶</a></dt>
-<dd><dl class="method">
-<dt id="plastexcustom.TexTree.Tree.get_tree_rows">
-<code class="descname">get_tree_rows</code><span class="sig-paren">(</span><em>rows=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.TexTree.Tree.get_tree_rows" title="Link zu dieser Definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="function">
-<dt id="plastexcustom.TexTree.find_formatter_class">
-<code class="descclassname">plastexcustom.TexTree.</code><code class="descname">find_formatter_class</code><span class="sig-paren">(</span><em>parents_list</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.TexTree.find_formatter_class" title="Link zu dieser Definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="plastexcustom.TexTree.get_parents">
-<code class="descclassname">plastexcustom.TexTree.</code><code class="descname">get_parents</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.TexTree.get_parents" title="Link zu dieser Definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="plastexcustom.TexTree.main">
-<code class="descclassname">plastexcustom.TexTree.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.TexTree.main" title="Link zu dieser Definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="plastexcustom.TexTree.print_node">
-<code class="descclassname">plastexcustom.TexTree.</code><code class="descname">print_node</code><span class="sig-paren">(</span><em>node</em>, <em>level=0</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.TexTree.print_node" title="Link zu dieser Definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="plastexcustom.TexTree.print_tree">
-<code class="descclassname">plastexcustom.TexTree.</code><code class="descname">print_tree</code><span class="sig-paren">(</span><em>node</em>, <em>level=0</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.TexTree.print_tree" title="Link zu dieser Definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="plastexcustom.TexTree.walk_tree">
-<code class="descclassname">plastexcustom.TexTree.</code><code class="descname">walk_tree</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.TexTree.walk_tree" title="Link zu dieser Definition">¶</a></dt>
-<dd></dd></dl>
-
+<div class="section" id="plastexcustom-textree-module">
+<h2>plastexcustom.TexTree module<a class="headerlink" href="#plastexcustom-textree-module" title="Link zu dieser Überschrift">¶</a></h2>
 </div>
-<div class="section" id="module-plastexcustom.custom_imager">
-<span id="plastexcustom-custom-imager-module"></span><h2>plastexcustom.custom_imager module<a class="headerlink" href="#module-plastexcustom.custom_imager" title="Link zu dieser Überschrift">¶</a></h2>
-<dl class="class">
-<dt id="plastexcustom.custom_imager.CustomImager">
-<em class="property">class </em><code class="descclassname">plastexcustom.custom_imager.</code><code class="descname">CustomImager</code><span class="sig-paren">(</span><em>document</em>, <em>imageTypes=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.custom_imager.CustomImager" title="Link zu dieser Definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">plasTeX.Imagers.Imager</span></code></p>
-<dl class="method">
-<dt id="plastexcustom.custom_imager.CustomImager.compileLatex">
-<code class="descname">compileLatex</code><span class="sig-paren">(</span><em>source</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.custom_imager.CustomImager.compileLatex" title="Link zu dieser Definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<div class="section" id="plastexcustom-custom-imager-module">
+<h2>plastexcustom.custom_imager module<a class="headerlink" href="#plastexcustom-custom-imager-module" title="Link zu dieser Überschrift">¶</a></h2>
 </div>
-<div class="section" id="module-plastexcustom.custom_renderer">
-<span id="plastexcustom-custom-renderer-module"></span><h2>plastexcustom.custom_renderer module<a class="headerlink" href="#module-plastexcustom.custom_renderer" title="Link zu dieser Überschrift">¶</a></h2>
-<dl class="class">
-<dt id="plastexcustom.custom_renderer.Renderer">
-<em class="property">class </em><code class="descclassname">plastexcustom.custom_renderer.</code><code class="descname">Renderer</code><span class="sig-paren">(</span><em>data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.custom_renderer.Renderer" title="Link zu dieser Definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">plasTeX.Renderers.Renderer</span></code></p>
-<dl class="method">
-<dt id="plastexcustom.custom_renderer.Renderer.default">
-<code class="descname">default</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.custom_renderer.Renderer.default" title="Link zu dieser Definition">¶</a></dt>
-<dd><p>Rendering method for all non-text nodes</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="plastexcustom.custom_renderer.Renderer.textDefault">
-<code class="descname">textDefault</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.custom_renderer.Renderer.textDefault" title="Link zu dieser Definition">¶</a></dt>
-<dd><p>Rendering method for all text nodes</p>
-</dd></dl>
-
-</dd></dl>
-
+<div class="section" id="plastexcustom-custom-renderer-module">
+<h2>plastexcustom.custom_renderer module<a class="headerlink" href="#plastexcustom-custom-renderer-module" title="Link zu dieser Überschrift">¶</a></h2>
 </div>
-<div class="section" id="module-plastexcustom.main">
-<span id="plastexcustom-main-module"></span><h2>plastexcustom.main module<a class="headerlink" href="#module-plastexcustom.main" title="Link zu dieser Überschrift">¶</a></h2>
-<p>Hauptskript, das zuerst den Parser aufruft, und anschließend den Dokumentenbaum mithilfe des
-custom_renderers sowie der hier definierten Funktionen rendert.</p>
-<dl class="function">
-<dt id="plastexcustom.main.convert_edtext">
-<code class="descclassname">plastexcustom.main.</code><code class="descname">convert_edtext</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.main.convert_edtext" title="Link zu dieser Definition">¶</a></dt>
-<dd><p>Rendert das edtext Kommando in der Form
-&lt;edtext&gt;&lt;text&gt; ... &lt;/text&gt;&lt;app&gt; ... &lt;/app&gt;&lt;/edtext&gt;</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="plastexcustom.main.convert_graphics">
-<code class="descclassname">plastexcustom.main.</code><code class="descname">convert_graphics</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.main.convert_graphics" title="Link zu dieser Definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="plastexcustom.main.do_not_write_tags">
-<code class="descclassname">plastexcustom.main.</code><code class="descname">do_not_write_tags</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.main.do_not_write_tags" title="Link zu dieser Definition">¶</a></dt>
-<dd><p>Schreibt den Inhalt des aktuellen Environments/Befehls nach XML, aber erzeugt keine Tags
-dafür</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="plastexcustom.main.do_nothing">
-<code class="descclassname">plastexcustom.main.</code><code class="descname">do_nothing</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.main.do_nothing" title="Link zu dieser Definition">¶</a></dt>
-<dd><p>Diese Funktion gibt einen leeren (Unicode-) String zurück.
-Kann benutzt werden, um zu verhindern, dass unnötige Elemente in der XML-Datei auftauchen.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="plastexcustom.main.end_paragraph">
-<code class="descclassname">plastexcustom.main.</code><code class="descname">end_paragraph</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.main.end_paragraph" title="Link zu dieser Definition">¶</a></dt>
-<dd><p>Schließt einen Paragraphen mittels &lt;/p&gt;</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="plastexcustom.main.equation_as_latexsrc">
-<code class="descclassname">plastexcustom.main.</code><code class="descname">equation_as_latexsrc</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.main.equation_as_latexsrc" title="Link zu dieser Definition">¶</a></dt>
-<dd><p>Wie equation_as_latexsrc_with_image, aber ohne &lt;imgpath&gt;...&lt;/imgpath&gt;</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="plastexcustom.main.equation_as_latexsrc_with_image">
-<code class="descclassname">plastexcustom.main.</code><code class="descname">equation_as_latexsrc_with_image</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.main.equation_as_latexsrc_with_image" title="Link zu dieser Definition">¶</a></dt>
-<dd><p>Funktion, um Mathe-Umgebungen umzuwandeln.
-Im &lt;src&gt; Tag wird die Original Latex-Formel angezeigt, während &lt;imgpath&gt; den Pfad zum erstellten
-Formelbild enthält.
-Anmerkung: Bilder werden nicht erstellt. Plastex-Bug?</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="plastexcustom.main.main">
-<code class="descclassname">plastexcustom.main.</code><code class="descname">main</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.main.main" title="Link zu dieser Definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="plastexcustom.main.open_paragraph">
-<code class="descclassname">plastexcustom.main.</code><code class="descname">open_paragraph</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.main.open_paragraph" title="Link zu dieser Definition">¶</a></dt>
-<dd><p>Öffnet einen Paragraphen mittels &lt;p&gt;</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="plastexcustom.main.textsize">
-<code class="descclassname">plastexcustom.main.</code><code class="descname">textsize</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.main.textsize" title="Link zu dieser Definition">¶</a></dt>
-<dd></dd></dl>
-
+<div class="section" id="plastexcustom-main-module">
+<h2>plastexcustom.main module<a class="headerlink" href="#plastexcustom-main-module" title="Link zu dieser Überschrift">¶</a></h2>
 </div>
-<div class="section" id="module-plastexcustom.make_pretty">
-<span id="plastexcustom-make-pretty-module"></span><h2>plastexcustom.make_pretty module<a class="headerlink" href="#module-plastexcustom.make_pretty" title="Link zu dieser Überschrift">¶</a></h2>
-<dl class="function">
-<dt id="plastexcustom.make_pretty.main">
-<code class="descclassname">plastexcustom.make_pretty.</code><code class="descname">main</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.make_pretty.main" title="Link zu dieser Definition">¶</a></dt>
-<dd></dd></dl>
-
+<div class="section" id="plastexcustom-make-pretty-module">
+<h2>plastexcustom.make_pretty module<a class="headerlink" href="#plastexcustom-make-pretty-module" title="Link zu dieser Überschrift">¶</a></h2>
 </div>
-<div class="section" id="module-plastexcustom.make_test">
-<span id="plastexcustom-make-test-module"></span><h2>plastexcustom.make_test module<a class="headerlink" href="#module-plastexcustom.make_test" title="Link zu dieser Überschrift">¶</a></h2>
-<p>Erstellt ein simples Tex-File mit Fülltext.</p>
-<dl class="function">
-<dt id="plastexcustom.make_test.main">
-<code class="descclassname">plastexcustom.make_test.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.make_test.main" title="Link zu dieser Definition">¶</a></dt>
-<dd></dd></dl>
-
+<div class="section" id="plastexcustom-make-test-module">
+<h2>plastexcustom.make_test module<a class="headerlink" href="#plastexcustom-make-test-module" title="Link zu dieser Überschrift">¶</a></h2>
 </div>
-<div class="section" id="module-plastexcustom">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-plastexcustom" title="Link zu dieser Überschrift">¶</a></h2>
+<div class="section" id="module-contents">
+<h2>Module contents<a class="headerlink" href="#module-contents" title="Link zu dieser Überschrift">¶</a></h2>
 </div>
 </div>
 
@@ -266,14 +98,14 @@ Anmerkung: Bilder werden nicht erstellt. Plastex-Bug?</p>
 <li><a class="reference internal" href="#">plastexcustom package</a><ul>
 <li><a class="reference internal" href="#subpackages">Subpackages</a></li>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-plastexcustom.CustomBase">plastexcustom.CustomBase module</a></li>
-<li><a class="reference internal" href="#module-plastexcustom.TexTree">plastexcustom.TexTree module</a></li>
-<li><a class="reference internal" href="#module-plastexcustom.custom_imager">plastexcustom.custom_imager module</a></li>
-<li><a class="reference internal" href="#module-plastexcustom.custom_renderer">plastexcustom.custom_renderer module</a></li>
-<li><a class="reference internal" href="#module-plastexcustom.main">plastexcustom.main module</a></li>
-<li><a class="reference internal" href="#module-plastexcustom.make_pretty">plastexcustom.make_pretty module</a></li>
-<li><a class="reference internal" href="#module-plastexcustom.make_test">plastexcustom.make_test module</a></li>
-<li><a class="reference internal" href="#module-plastexcustom">Module contents</a></li>
+<li><a class="reference internal" href="#plastexcustom-custombase-module">plastexcustom.CustomBase module</a></li>
+<li><a class="reference internal" href="#plastexcustom-textree-module">plastexcustom.TexTree module</a></li>
+<li><a class="reference internal" href="#plastexcustom-custom-imager-module">plastexcustom.custom_imager module</a></li>
+<li><a class="reference internal" href="#plastexcustom-custom-renderer-module">plastexcustom.custom_renderer module</a></li>
+<li><a class="reference internal" href="#plastexcustom-main-module">plastexcustom.main module</a></li>
+<li><a class="reference internal" href="#plastexcustom-make-pretty-module">plastexcustom.make_pretty module</a></li>
+<li><a class="reference internal" href="#plastexcustom-make-test-module">plastexcustom.make_test module</a></li>
+<li><a class="reference internal" href="#module-contents">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -287,7 +119,7 @@ Anmerkung: Bilder werden nicht erstellt. Plastex-Bug?</p>
   <div role="note" aria-label="source link">
     <h3>Diese Seite</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/plastexcustom.rst.txt"
+      <li><a href="_sources/plastexcustom.txt"
             rel="nofollow">Quellcode anzeigen</a></li>
     </ul>
    </div>
@@ -309,11 +141,11 @@ Anmerkung: Bilder werden nicht erstellt. Plastex-Bug?</p>
       &copy;2017, Gabriel Kabbe.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.3</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.9</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
       |
-      <a href="_sources/plastexcustom.rst.txt"
+      <a href="_sources/plastexcustom.txt"
           rel="nofollow">Page source</a>
     </div>
 

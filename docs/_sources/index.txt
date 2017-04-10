@@ -11,6 +11,10 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+   Installation
+   Benutzung
+   Anpassung
+
 
 
 Indices and tables
