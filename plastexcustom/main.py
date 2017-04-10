@@ -107,6 +107,8 @@ def main(*args):
 
     renderer = Renderer()
 
+    # Alle in textsizes enthaltenen Latex-Befehle werden nicht gerendert
+
     textsizes = ["tiny", "scriptsize", "footnotesize", "small", "normalsize", "large", "Large",
                  "LARGE", "huge", "Huge"]
 
