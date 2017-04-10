@@ -79,7 +79,7 @@ unicode-String zurückgeben. Um bei dem edtext-Beispiel zu bleiben:
 
 Nun muss man nur noch dem Renderer mitteilen, dass man statt der
 Default-Funktion die neue Funktion zum Rendern benutzen möchte. Dies tut
-man mittels
+man in der Datei plastexcustom/main.py in der main-Funktion mittels
 
 .. code:: python
 
