@@ -30,8 +30,10 @@ c["debugging"]["verbose"] = "True"
 def convert_edtext(node):
     """Rendert das edtext Kommando in der Form 
     <edtext><text> ... </text><app> ... </app></edtext>"""
-    return u'<edtext><text>{}</text><app>{}</app></edtext>'.format(
-        unicode(node.attributes["text"]), unicode(node.attributes["content"]))
+    node_text = unicode(node.attributes["text"])
+    node_content = unicode(node.attributes["content"])
+    logger.debug(u'Converting node with text "{}" and content "{}"'.format(node_text, node_content))
+    return u'<edtext><text>{}</text><app>{}</app></edtext>'.format(node_text, node_content)
 
 
 def do_nothing(node):
