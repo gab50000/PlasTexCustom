@@ -42,6 +42,10 @@ def do_nothing(node):
     return u''
 
 
+def debug(node):
+    import ipdb; ipdb.set_trace()
+
+
 def do_not_write_tags(node):
     """Schreibt den Inhalt des aktuellen Environments/Befehls nach XML, aber erzeugt keine Tags
     dafür"""
