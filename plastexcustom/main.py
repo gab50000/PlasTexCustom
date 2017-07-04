@@ -94,6 +94,10 @@ def textsize(node):
     return u'<v size="{}">{}</v>'.format(node.nodeName, unicode(node))
 
 
+def eszett(node):
+    return u"ß"
+
+
 #---------------------------------------------------------------------------------------------------
 
 
@@ -160,6 +164,8 @@ def main(*args):
     renderer["includegraphics"] = convert_graphics
     renderer["pstart"] = open_paragraph
     renderer["pend"] = close_paragraph
+
+    renderer["ss"] = debug
 
     # Render the document
     renderer.render(document)

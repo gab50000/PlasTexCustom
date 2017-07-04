@@ -23,7 +23,7 @@ class Renderer(Renderer):
         # Find parents and check for formatting
 
 
-        s.append('<%s>' % node.nodeName)
+        s.append(u'<%s>' % node.nodeName)
         # See if we have any attributes to render
         if node.hasAttributes():
             for key, value in node.attributes.items():
@@ -34,13 +34,13 @@ class Renderer(Renderer):
                 # these nodes are the same as the child nodes
                 if key == 'self':
                     continue
-                s.append('<%s>%s</%s>' % (key, unicode(value), key))
+                s.append(u'<%s>%s</%s>' % (key, unicode(value), key))
 
         # Invoke rendering on child nodes
         s.append(unicode(node))
 
         # End tag
-        s.append('</%s>' % node.nodeName)
+        s.append(u'</%s>' % node.nodeName)
 
         return u'\n'.join(s)
 
