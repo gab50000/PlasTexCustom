@@ -46,4 +46,5 @@ class Renderer(Renderer):
 
     def textDefault(self, node):
         """ Rendering method for all text nodes """
-        return node.replace('&','&amp;').replace('<','&lt;').replace('>','&gt;')
+        return node.replace('&','&amp;').replace('<','&lt;').replace('>','&gt;')\
+            .replace("active::", "")
