@@ -111,6 +111,7 @@ def main(*args):
     args = parser.parse_args()
 
     logger.setLevel(getattr(logging, args.loglevel.upper()))
+    logger.info("Log level set to {}".format(args.loglevel))
     # Determine name of XML output
     filename_root, ext = os.path.splitext(sys.argv[1])
     xml_filename = filename_root + ".xml"
