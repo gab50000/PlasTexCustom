@@ -9,7 +9,7 @@ setup(name='custex',
       packages=['plastexcustom',
                 'plastexcustom.packages'],
       install_requires=["plasTeX",
-                        "nose",
+                        "pytest",
                         "lxml"],
       entry_points={
                     'console_scripts': ["tex2xml=plastexcustom.main:main",
