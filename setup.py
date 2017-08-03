@@ -15,7 +15,8 @@ setup(name='custex',
                     'console_scripts': ["tex2xml=plastexcustom.main:main",
                                         "prettify=plastexcustom.make_pretty:main",
                                         "treeview=plastexcustom.TexTree:main",
-                                        "mktest=plastexcustom.make_test:main"
+                                        "mktest=plastexcustom.make_test:main",
+                                        "check_pars=plastexcustom.tools.paragraph_checker:main"
                                         ],
       },
       zip_safe=False)
