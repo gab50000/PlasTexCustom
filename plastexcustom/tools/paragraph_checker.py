@@ -5,44 +5,80 @@ import logging
 
 
 logger = logging.getLogger(__name__)
-logging.basicConfig(level=logging.DEBUG)
 
 
 def get_line_of_charpos(text, charpos):
-    matches = [m.start() for m in re.finditer(r"$", text, flags=re.MULTILINE)]
-    logger.debug(matches)
+    linebreak_pos = [m.start() for m in re.finditer(r"$", text[:charpos], flags=re.MULTILINE)]
+    # Get number of comment lines before charpos
+    logger.debug(text)
+    logger.debug("Linebreak positions: {}".format(linebreak_pos))
+    logger.debug("Charpos is {}".format(charpos))
     # If charpos is before first line break, line number is 1
-    if charpos < matches[0]:
+    if charpos < linebreak_pos[0]:
         return 1
-    for (i, m1), m2 in zip(enumerate(matches[:-1], start=1), matches[1:]):
+    for (i, m1), m2 in zip(enumerate(linebreak_pos[:-1], start=1), linebreak_pos[1:]):
+        logger.debug("Checking line {} (pos {} - pos {}".format(i, m1, m2))
         if m1 < charpos < m2:
+            logger.debug("{} < {} < {}".format(m1, charpos, m2))
             return i + 1
 
 
-def main():
+def check_single_file(filename, last_status=0):
+    logger.info("Check file {}".format(filename))
     start_exp = re.compile(r"\\pstart")
     end_exp = re.compile(r"\\pend")
-    filename = sys.argv[1]
     with codecs.open(filename, "r", encoding="utf-8") as f:
         # Get all lines which are not comments
         lines = f.readlines()
     # Join lines to one string
     content = "".join(lines)
-    content_stripped = "".join(line for line in lines if not line.lstrip().startswith("%"))
-    pstart_matches = re.finditer(start_exp, content_stripped)
-    pend_matches = re.finditer(end_exp, content_stripped)
-    matches = sorted(list(pstart_matches) + list(pend_matches), key=lambda m: m.start())
+
+    status = last_status
+
+    matches = []
+    # position offset caused by removed comments
+    offset = 0
+    positions = []
+
+    for line in lines:
+        tmp_match = []
+        start_match = re.search(start_exp, line)
+        end_match = re.search(end_exp, line)
+        if start_match:
+            tmp_match.append(start_match)
+        if end_match:
+            tmp_match.append(end_match)
+        tmp_match = sorted(tmp_match, key=lambda m: m.start())
+        matches += tmp_match
+        positions += [m.start() + offset for m in tmp_match]
+        offset += len(line)
+
     counter = [1 if m.group() == u"\\pstart" else -1 for m in matches]
+    logger.debug("Found positions: {}".format(positions))
 
     summe = 0
+
     for i, x in enumerate(counter):
         summe += x
         if summe < 0 or summe > 1:
             logger.warn("pstart tags do not match pend tags!")
-            problem_line = get_line_of_charpos(content, matches[i].start())
+            problem_line = get_line_of_charpos(content, positions[i])
             logger.warn("Offending line: {}".format(problem_line))
-            break
+            sys.exit(1)
+
+    if status == 0:
+        logger.info("Everything is fine in file {}".format(filename))
     else:
-        logger.info("Everything is fine")
+        logger.info("One paragraph is still open at end of file {}".format(filename))
+
+    return status
 
 
+def main():
+    logging.basicConfig(level=logging.DEBUG)
+    filenames = sys.argv[1:]
+
+    status = 0
+    for fn in filenames:
+        status = check_single_file(fn, last_status=status)
+        logger.debug("Last status: {}".format(status))
