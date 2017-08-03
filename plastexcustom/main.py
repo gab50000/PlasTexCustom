@@ -14,6 +14,7 @@ from plasTeX.ConfigManager import ConfigManager
 from lxml import etree
 from xml.sax.saxutils import escape, unescape
 
+import plastexcustom
 from plastexcustom import packages
 from custom_renderer import Renderer
 from TexTree import walk_tree, print_tree, print_node, get_parents, find_formatter_class
@@ -105,6 +106,8 @@ def main(*args):
     parser = argparse.ArgumentParser("Convert tex to XML")
     parser.add_argument("filename", help="Latex-Filename")
     parser.add_argument("--pretty", action="store_true", help="Prettify output")
+    parser.add_argument("--validate", action="store_true", help="Validate XML using "
+                                                                "Relax NG schema")
     parser.add_argument("--loglevel", "-l", default="INFO",
                         choices=["info", "INFO", "debug", "DEBUG", "warn", "WARN"],
                         help="Set log level")
@@ -177,4 +180,12 @@ def main(*args):
         parser = etree.XMLParser(remove_blank_text=False)
         tree = etree.parse(xml_filename, parser)
         tree.write(xml_filename, pretty_print=True)
+
+    if args.validate:
+        curdir = os.path.dirname(plastexcustom.__file__)
+        relaxng_file = os.path.abspath(os.path.join(curdir, "../basisformat.rng.xml"))
+        logger.debug("Open RelaxNG file {}".format(relaxng_file))
+        relaxng_doc = etree.parse(relaxng_file)
+        relaxng = etree.RelaxNG(relaxng_doc)
+        import ipdb; ipdb.set_trace()
 
