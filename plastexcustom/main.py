@@ -43,7 +43,8 @@ def convert_edtext(node):
 
 def do_nothing(node):
     """Diese Funktion gibt einen leeren (Unicode-) String zurück.
-    Kann benutzt werden, um zu verhindern, dass unnötige Elemente in der XML-Datei auftauchen."""
+    Kann benutzt werden, um zu verhindern, dass unnötige Elemente in der XML-Datei auftauchen.
+    Achtung: Alle Kindesknoten werden dann auch nicht gerendert!"""
     logger.debug(u"Return empty string for node {}".format(node.nodeName))
     return u''
 
@@ -83,12 +84,12 @@ def equation_as_latexsrc(node):
 
 def open_paragraph(node):
     """Öffnet einen Paragraphen mittels <p>"""
-    return u"\n<p>\n"
+    return u"<p>"
 
 
 def close_paragraph(node):
     """Schließt einen Paragraphen mittels </p>"""
-    return u"\n</p>\n"
+    return u"</p>"
 
 
 def textsize(node):
@@ -140,7 +141,7 @@ def main(*args):
     textsizes = ["tiny", "scriptsize", "footnotesize", "small", "normalsize", "large", "Large",
                  "LARGE", "huge", "Huge"]
 
-    other = ["count", "setcounter"]
+    other = ["count", "setcounter", "xpageref", "xlineref"]
 
     for ts in textsizes:
         renderer[ts] = do_not_write_tags
@@ -153,7 +154,7 @@ def main(*args):
     # Achtung: gilt auch für alle enthaltenen Kindknoten
     # Bei Bedarf ergänzen!
 
-    to_be_ignored = ["vspace", "renewcommand"]
+    to_be_ignored = ["vspace", "renewcommand", "Afootins", "Bfootins", "Cfootins"]
 
     for tbi in to_be_ignored:
         renderer[tbi] = do_nothing
@@ -187,5 +188,6 @@ def main(*args):
         logger.debug("Open RelaxNG file {}".format(relaxng_file))
         relaxng_doc = etree.parse(relaxng_file)
         relaxng = etree.RelaxNG(relaxng_doc)
-        import ipdb; ipdb.set_trace()
+        doc = etree.parse(xml_filename)
+        relaxng.assertValid(doc)
 
