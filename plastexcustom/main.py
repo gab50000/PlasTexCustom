@@ -145,7 +145,7 @@ def main(*args):
     textsizes = ["tiny", "scriptsize", "footnotesize", "small", "normalsize", "large", "Large",
                  "LARGE", "huge", "Huge"]
 
-    other = ["count", "setcounter", "xpageref", "xlineref"]
+    other = ["count", "setcounter", "xpageref", "xlineref", "par", "noindent", "bgroup"]
 
     for ts in textsizes:
         renderer[ts] = do_not_write_tags
