@@ -8,9 +8,10 @@ logger = logging.getLogger(__name__)
 
 
 def get_line_of_charpos(text, charpos):
-    linebreak_pos = [m.start() for m in re.finditer(r"$", text[:charpos], flags=re.MULTILINE)]
+    linebreak_pos = [m.start() for m in re.finditer(r"$", text[:charpos + 1], flags=re.MULTILINE)]
     # Get number of comment lines before charpos
-    logger.debug(text)
+    for i, line in enumerate(text.splitlines()):
+        logger.debug(u"{}: {}".format(i, line))
     logger.debug("Linebreak positions: {}".format(linebreak_pos))
     logger.debug("Charpos is {}".format(charpos))
     # If charpos is before first line break, line number is 1
@@ -42,15 +43,16 @@ def check_single_file(filename, last_status=0):
 
     for line in lines:
         tmp_match = []
-        start_match = re.search(start_exp, line)
-        end_match = re.search(end_exp, line)
-        if start_match:
-            tmp_match.append(start_match)
-        if end_match:
-            tmp_match.append(end_match)
-        tmp_match = sorted(tmp_match, key=lambda m: m.start())
-        matches += tmp_match
-        positions += [m.start() + offset for m in tmp_match]
+        if not line.lstrip().startswith("%"):
+            start_match = re.search(start_exp, line)
+            end_match = re.search(end_exp, line)
+            if start_match:
+                tmp_match.append(start_match)
+            if end_match:
+                tmp_match.append(end_match)
+            tmp_match = sorted(tmp_match, key=lambda m: m.start())
+            matches += tmp_match
+            positions += [m.start() + offset for m in tmp_match]
         offset += len(line)
 
     counter = [1 if m.group() == u"\\pstart" else -1 for m in matches]
@@ -75,7 +77,7 @@ def check_single_file(filename, last_status=0):
 
 
 def main():
-    logging.basicConfig(level=logging.DEBUG)
+    logging.basicConfig(level=logging.INFO)
     filenames = sys.argv[1:]
 
     status = 0
