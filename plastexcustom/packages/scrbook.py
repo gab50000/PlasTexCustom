@@ -11,3 +11,7 @@ class textso(Base.Command):
 
 class textsuperscript(Base.Command):
     args = "self"
+
+
+class ss(Base.Command):
+    args = ""

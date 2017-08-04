@@ -176,7 +176,7 @@ def main(*args):
     renderer["pend"] = close_paragraph
     renderer["textsuperscript"] = textsuperscript
 
-    renderer["ss"] = debug
+    renderer["ss"] = eszett
 
     # Render the document
     renderer.render(document)
