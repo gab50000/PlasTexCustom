@@ -100,6 +100,10 @@ def eszett(node):
     return u"ß"
 
 
+def textsuperscript(node):
+    return u'<hi rendition="#sup">{}</hi>'.format(unicode(node))
+
+
 #---------------------------------------------------------------------------------------------------
 
 
@@ -169,6 +173,7 @@ def main(*args):
     renderer["includegraphics"] = convert_graphics
     renderer["pstart"] = open_paragraph
     renderer["pend"] = close_paragraph
+    renderer["textsuperscript"] = textsuperscript
 
     renderer["ss"] = debug
 

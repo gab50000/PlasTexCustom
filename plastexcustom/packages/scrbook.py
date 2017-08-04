@@ -7,3 +7,7 @@ class pleibvdash(Base.Command):
 
 class textso(Base.Command):
     args = "self"
+
+
+class textsuperscript(Base.Command):
+    args = "self"
