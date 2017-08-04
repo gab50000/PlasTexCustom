@@ -158,7 +158,8 @@ def main(*args):
     # Achtung: gilt auch für alle enthaltenen Kindknoten
     # Bei Bedarf ergänzen!
 
-    to_be_ignored = ["vspace", "renewcommand", "Afootins", "Bfootins", "Cfootins"]
+    to_be_ignored = ["vspace", "renewcommand", "Afootins", "Bfootins", "Cfootins", "tableofcontents",
+                     "clearpage", "cleardoublepage"]
 
     for tbi in to_be_ignored:
         renderer[tbi] = do_nothing
