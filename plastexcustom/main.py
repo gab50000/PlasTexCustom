@@ -105,6 +105,14 @@ def textsuperscript(node):
 
 
 #---------------------------------------------------------------------------------------------------
+def validate(xml_filename):
+    curdir = os.path.dirname(plastexcustom.__file__)
+    relaxng_file = os.path.abspath(os.path.join(curdir, "../basisformat.rng.xml"))
+    logger.debug("Open RelaxNG file {}".format(relaxng_file))
+    relaxng_doc = etree.parse(relaxng_file)
+    relaxng = etree.RelaxNG(relaxng_doc)
+    doc = etree.parse(xml_filename)
+    relaxng.assertValid(doc)
 
 
 def main(*args):
@@ -189,11 +197,9 @@ def main(*args):
         tree.write(xml_filename, pretty_print=True)
 
     if args.validate:
-        curdir = os.path.dirname(plastexcustom.__file__)
-        relaxng_file = os.path.abspath(os.path.join(curdir, "../basisformat.rng.xml"))
-        logger.debug("Open RelaxNG file {}".format(relaxng_file))
-        relaxng_doc = etree.parse(relaxng_file)
-        relaxng = etree.RelaxNG(relaxng_doc)
-        doc = etree.parse(xml_filename)
-        relaxng.assertValid(doc)
+        validate(xml_filename)
 
+
+def validate_cli():
+    xml_filename = sys.argv[1]
+    validate(xml_filename)

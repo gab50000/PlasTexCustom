@@ -16,7 +16,8 @@ setup(name='custex',
                                         "prettify=plastexcustom.make_pretty:main",
                                         "treeview=plastexcustom.TexTree:main",
                                         "mktest=plastexcustom.make_test:main",
-                                        "check_pars=plastexcustom.tools.paragraph_checker:main"
+                                        "check_pars=plastexcustom.tools.paragraph_checker:main",
+                                        "validate=plastexcustom.main:validate_cli"
                                         ],
       },
       zip_safe=False)
