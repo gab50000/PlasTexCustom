@@ -1,16 +1,13 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Anpassung &#8212; PlasTeXCustom 0.1a Dokumentation</title>
-    
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
@@ -35,7 +32,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -52,7 +49,7 @@ Beides kann nach Bedarf angepasst werden.</p>
 <h2>Parsen<a class="headerlink" href="#parsen" title="Link zu dieser Überschrift">¶</a></h2>
 <p>Um PlasTeX die Regeln zum Parsen eines Latex-Befehls zu vermitteln, muss
 im Ordner plastexcustom/packages eine neue Datei angelegt werden, die
-den Namen des jeweiligen Latex-Pakets hat und die Endung &#8221;.py&#8221;.</p>
+den Namen des jeweiligen Latex-Pakets hat und die Endung „.py“.</p>
 <p>Innerhalb dieser Datei wird nun für jeden Befehl bzw. jede Umgebung eine
 Klasse angelegt. Beispielsweise sieht die Klasse für edtext aus dem
 Paket ledmac folgendermaßen aus:</p>
@@ -69,10 +66,10 @@ neue Information, die wir unserer neuen Klasse noch mitgeben, ist die
 Variable args, die aus einem String bestehend aus zwei Wörtern besteht.
 So erfährt PlasTeX, dass dieser Befehl zwei Argumente benötigt.</p>
 <p>Wäre eines der Argumente in Latex optional, müsste es im args String in
-Klammern (&#8220;()&#8221; oder &#8220;[]&#8221;) gesetzt werden.</p>
+Klammern („()“ oder „[]“) gesetzt werden.</p>
 <p>Die Namen der Argumente innerhalb des args Strings sind frei wählbar. Im
 schließlich geparsten Dokument sind sie im entsprechenden Knoten des
-Dokumentenbaums im &#8220;attributes&#8221; Dictionary zu finden.</p>
+Dokumentenbaums im „attributes“ Dictionary zu finden.</p>
 <p>Die Argumente eines Knoten vom Typ edtext könnte man beispielweise per</p>
 <div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">]</span>
 <span class="n">content</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">attributes</span><span class="p">[</span><span class="s2">&quot;content&quot;</span><span class="p">]</span>
@@ -86,7 +83,7 @@ Dokumentenbaums im &#8220;attributes&#8221; Dictionary zu finden.</p>
 Informationen aus dem Latex-Dokument dargestellt werden.</p>
 <p>Der XML-Renderer ist zu finden unter plastexcustom/custom_renderer.py
 Er rendert jeden Node aus dem von Plastex erstellten Dokumentenbaum,
-indem er das Attribut &#8220;nodeName&#8221; in spitze Klammern setzt.</p>
+indem er das Attribut „nodeName“ in spitze Klammern setzt.</p>
 <p>Hat man den Renderer mittels</p>
 <div class="code python highlight-default"><div class="highlight"><pre><span></span><span class="n">renderer</span> <span class="o">=</span> <span class="n">Renderer</span><span class="p">()</span>
 </pre></div>
@@ -160,7 +157,7 @@ man in der Datei plastexcustom/main.py in der main-Funktion mittels</p>
       &copy;2017, Gabriel Kabbe.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.3</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |

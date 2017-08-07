@@ -7,60 +7,77 @@ Subpackages
 .. toctree::
 
     plastexcustom.packages
+    plastexcustom.tools
 
 Submodules
 ----------
 
-plastexcustom.CustomBase module
--------------------------------
+plastexcustom\.CustomBase module
+--------------------------------
 
 .. automodule:: plastexcustom.CustomBase
     :members:
     :undoc-members:
     :show-inheritance:
 
-plastexcustom.TexTree module
-----------------------------
+plastexcustom\.TexTree module
+-----------------------------
 
 .. automodule:: plastexcustom.TexTree
     :members:
     :undoc-members:
     :show-inheritance:
 
-plastexcustom.custom_imager module
-----------------------------------
+plastexcustom\.check\_paragraphs module
+---------------------------------------
+
+.. automodule:: plastexcustom.check_paragraphs
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+plastexcustom\.custom\_command module
+-------------------------------------
+
+.. automodule:: plastexcustom.custom_command
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+plastexcustom\.custom\_imager module
+------------------------------------
 
 .. automodule:: plastexcustom.custom_imager
     :members:
     :undoc-members:
     :show-inheritance:
 
-plastexcustom.custom_renderer module
-------------------------------------
+plastexcustom\.custom\_renderer module
+--------------------------------------
 
 .. automodule:: plastexcustom.custom_renderer
     :members:
     :undoc-members:
     :show-inheritance:
 
-plastexcustom.main module
--------------------------
+plastexcustom\.main module
+--------------------------
 
 .. automodule:: plastexcustom.main
     :members:
     :undoc-members:
     :show-inheritance:
 
-plastexcustom.make_pretty module
---------------------------------
+plastexcustom\.make\_pretty module
+----------------------------------
 
 .. automodule:: plastexcustom.make_pretty
     :members:
     :undoc-members:
     :show-inheritance:
 
-plastexcustom.make_test module
-------------------------------
+plastexcustom\.make\_test module
+--------------------------------
 
 .. automodule:: plastexcustom.make_test
     :members:

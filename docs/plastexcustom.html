@@ -1,16 +1,13 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>plastexcustom package &#8212; PlasTeXCustom 0.1a Dokumentation</title>
-    
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
@@ -34,7 +31,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -54,6 +51,12 @@
 <li class="toctree-l2"><a class="reference internal" href="plastexcustom.packages.html#module-plastexcustom.packages.ledmac">plastexcustom.packages.ledmac module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plastexcustom.packages.html#module-plastexcustom.packages.scrbook">plastexcustom.packages.scrbook module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plastexcustom.packages.html#module-plastexcustom.packages">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="plastexcustom.tools.html">plastexcustom.tools package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plastexcustom.tools.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plastexcustom.tools.html#module-plastexcustom.tools.paragraph_checker">plastexcustom.tools.paragraph_checker module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plastexcustom.tools.html#module-plastexcustom.tools">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -130,6 +133,23 @@
 <dd></dd></dl>
 
 </div>
+<div class="section" id="module-plastexcustom.check_paragraphs">
+<span id="plastexcustom-check-paragraphs-module"></span><h2>plastexcustom.check_paragraphs module<a class="headerlink" href="#module-plastexcustom.check_paragraphs" title="Link zu dieser Überschrift">¶</a></h2>
+</div>
+<div class="section" id="module-plastexcustom.custom_command">
+<span id="plastexcustom-custom-command-module"></span><h2>plastexcustom.custom_command module<a class="headerlink" href="#module-plastexcustom.custom_command" title="Link zu dieser Überschrift">¶</a></h2>
+<dl class="class">
+<dt id="plastexcustom.custom_command.CustomCommand">
+<em class="property">class </em><code class="descclassname">plastexcustom.custom_command.</code><code class="descname">CustomCommand</code><a class="headerlink" href="#plastexcustom.custom_command.CustomCommand" title="Link zu dieser Definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">plasTeX.Command</span></code></p>
+<dl class="method">
+<dt id="plastexcustom.custom_command.CustomCommand.digest">
+<code class="descname">digest</code><span class="sig-paren">(</span><em>tokens</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.custom_command.CustomCommand.digest" title="Link zu dieser Definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="module-plastexcustom.custom_imager">
 <span id="plastexcustom-custom-imager-module"></span><h2>plastexcustom.custom_imager module<a class="headerlink" href="#module-plastexcustom.custom_imager" title="Link zu dieser Überschrift">¶</a></h2>
 <dl class="class">
@@ -148,7 +168,7 @@
 <span id="plastexcustom-custom-renderer-module"></span><h2>plastexcustom.custom_renderer module<a class="headerlink" href="#module-plastexcustom.custom_renderer" title="Link zu dieser Überschrift">¶</a></h2>
 <dl class="class">
 <dt id="plastexcustom.custom_renderer.Renderer">
-<em class="property">class </em><code class="descclassname">plastexcustom.custom_renderer.</code><code class="descname">Renderer</code><span class="sig-paren">(</span><em>data=None</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.custom_renderer.Renderer" title="Link zu dieser Definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">plastexcustom.custom_renderer.</code><code class="descname">Renderer</code><span class="sig-paren">(</span><em>data={}</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.custom_renderer.Renderer" title="Link zu dieser Definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">plasTeX.Renderers.Renderer</span></code></p>
 <dl class="method">
 <dt id="plastexcustom.custom_renderer.Renderer.default">
@@ -170,15 +190,26 @@
 <p>Hauptskript, das zuerst den Parser aufruft, und anschließend den Dokumentenbaum mithilfe des
 custom_renderers sowie der hier definierten Funktionen rendert.</p>
 <dl class="function">
+<dt id="plastexcustom.main.close_paragraph">
+<code class="descclassname">plastexcustom.main.</code><code class="descname">close_paragraph</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.main.close_paragraph" title="Link zu dieser Definition">¶</a></dt>
+<dd><p>Schließt einen Paragraphen mittels &lt;/p&gt;</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="plastexcustom.main.convert_edtext">
 <code class="descclassname">plastexcustom.main.</code><code class="descname">convert_edtext</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.main.convert_edtext" title="Link zu dieser Definition">¶</a></dt>
 <dd><p>Rendert das edtext Kommando in der Form
-&lt;edtext&gt;&lt;text&gt; ... &lt;/text&gt;&lt;app&gt; ... &lt;/app&gt;&lt;/edtext&gt;</p>
+&lt;edtext&gt;&lt;text&gt; … &lt;/text&gt;&lt;app&gt; … &lt;/app&gt;&lt;/edtext&gt;</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="plastexcustom.main.convert_graphics">
 <code class="descclassname">plastexcustom.main.</code><code class="descname">convert_graphics</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.main.convert_graphics" title="Link zu dieser Definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plastexcustom.main.debug">
+<code class="descclassname">plastexcustom.main.</code><code class="descname">debug</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.main.debug" title="Link zu dieser Definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
@@ -192,19 +223,14 @@ dafür</p>
 <dt id="plastexcustom.main.do_nothing">
 <code class="descclassname">plastexcustom.main.</code><code class="descname">do_nothing</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.main.do_nothing" title="Link zu dieser Definition">¶</a></dt>
 <dd><p>Diese Funktion gibt einen leeren (Unicode-) String zurück.
-Kann benutzt werden, um zu verhindern, dass unnötige Elemente in der XML-Datei auftauchen.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="plastexcustom.main.end_paragraph">
-<code class="descclassname">plastexcustom.main.</code><code class="descname">end_paragraph</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.main.end_paragraph" title="Link zu dieser Definition">¶</a></dt>
-<dd><p>Schließt einen Paragraphen mittels &lt;/p&gt;</p>
+Kann benutzt werden, um zu verhindern, dass unnötige Elemente in der XML-Datei auftauchen.
+Achtung: Alle Kindesknoten werden dann auch nicht gerendert!</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="plastexcustom.main.equation_as_latexsrc">
 <code class="descclassname">plastexcustom.main.</code><code class="descname">equation_as_latexsrc</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.main.equation_as_latexsrc" title="Link zu dieser Definition">¶</a></dt>
-<dd><p>Wie equation_as_latexsrc_with_image, aber ohne &lt;imgpath&gt;...&lt;/imgpath&gt;</p>
+<dd><p>Wie equation_as_latexsrc_with_image, aber ohne &lt;imgpath&gt;…&lt;/imgpath&gt;</p>
 </dd></dl>
 
 <dl class="function">
@@ -215,6 +241,11 @@ Im &lt;src&gt; Tag wird die Original Latex-Formel angezeigt, während &lt;imgpat
 Formelbild enthält.
 Anmerkung: Bilder werden nicht erstellt. Plastex-Bug?</p>
 </dd></dl>
+
+<dl class="function">
+<dt id="plastexcustom.main.eszett">
+<code class="descclassname">plastexcustom.main.</code><code class="descname">eszett</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.main.eszett" title="Link zu dieser Definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="function">
 <dt id="plastexcustom.main.main">
@@ -228,8 +259,31 @@ Anmerkung: Bilder werden nicht erstellt. Plastex-Bug?</p>
 </dd></dl>
 
 <dl class="function">
+<dt id="plastexcustom.main.read_tags">
+<code class="descclassname">plastexcustom.main.</code><code class="descname">read_tags</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.main.read_tags" title="Link zu dieser Definition">¶</a></dt>
+<dd><p>Liest XML Tags aus einer Datei &lt;filename&gt;.
+Sucht nach dieser Datei erst im aktuellen Verzeichnis (von dem aus das Skript aufgerufen wurde),
+danach im files Ordner des PlastexCustom Packages.</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="plastexcustom.main.textsize">
 <code class="descclassname">plastexcustom.main.</code><code class="descname">textsize</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.main.textsize" title="Link zu dieser Definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plastexcustom.main.textsuperscript">
+<code class="descclassname">plastexcustom.main.</code><code class="descname">textsuperscript</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.main.textsuperscript" title="Link zu dieser Definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plastexcustom.main.validate">
+<code class="descclassname">plastexcustom.main.</code><code class="descname">validate</code><span class="sig-paren">(</span><em>xml_filename</em><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.main.validate" title="Link zu dieser Definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="plastexcustom.main.validate_cli">
+<code class="descclassname">plastexcustom.main.</code><code class="descname">validate_cli</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#plastexcustom.main.validate_cli" title="Link zu dieser Definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -268,6 +322,8 @@ Anmerkung: Bilder werden nicht erstellt. Plastex-Bug?</p>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
 <li><a class="reference internal" href="#module-plastexcustom.CustomBase">plastexcustom.CustomBase module</a></li>
 <li><a class="reference internal" href="#module-plastexcustom.TexTree">plastexcustom.TexTree module</a></li>
+<li><a class="reference internal" href="#module-plastexcustom.check_paragraphs">plastexcustom.check_paragraphs module</a></li>
+<li><a class="reference internal" href="#module-plastexcustom.custom_command">plastexcustom.custom_command module</a></li>
 <li><a class="reference internal" href="#module-plastexcustom.custom_imager">plastexcustom.custom_imager module</a></li>
 <li><a class="reference internal" href="#module-plastexcustom.custom_renderer">plastexcustom.custom_renderer module</a></li>
 <li><a class="reference internal" href="#module-plastexcustom.main">plastexcustom.main module</a></li>
@@ -309,7 +365,7 @@ Anmerkung: Bilder werden nicht erstellt. Plastex-Bug?</p>
       &copy;2017, Gabriel Kabbe.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.3</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
