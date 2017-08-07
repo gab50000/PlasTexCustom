@@ -20,5 +20,6 @@ setup(name='custex',
                                         "validate=plastexcustom.main:validate_cli"
                                         ],
       },
-      zip_safe=False)
+      zip_safe=False,
+      include_package_data=True)
 
