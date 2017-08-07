@@ -19,8 +19,6 @@ from plastexcustom import packages
 from custom_renderer import Renderer
 from TexTree import walk_tree, print_tree, print_node, get_parents, find_formatter_class
 
-custom_package_dir = os.path.dirname(packages.__file__)
-sys.path.insert(0, custom_package_dir)
 
 c = ConfigManager()
 c.add_section("debugging")
@@ -28,6 +26,27 @@ c["debugging"]["verbose"] = "True"
 
 
 logger = logging.getLogger(__name__)
+
+
+def read_tags(filename):
+    """Liest XML Tags aus einer Datei <filename>.
+    Sucht nach dieser Datei erst im aktuellen Verzeichnis (von dem aus das Skript aufgerufen wurde),
+    danach im files Ordner des PlastexCustom Packages."""
+    file_path = os.path.join(os.path.dirname(__file__), "files")
+    for path in (".", file_path):
+        try:
+            with open(os.path.join(path, filename), "r") as f:
+                tags = f.read().split()
+        except IOError:
+            logger.debug("Found no file {} in directory {}".format(filename,
+                                                                   os.path.abspath(path)))
+            continue
+        logger.debug("Found file {} in directory {}".format(filename,
+                                                            os.path.abspath(path)))
+        logger.debug("Tags: {}".format(tags))
+        return tags
+    return []
+
 
 #---------------------------------------------------------------------------------------------------
 # Hier werden die Funktionen definiert, die das XML Ausgabeformat für jeden Latex-Befehl bestimmen.
@@ -107,7 +126,7 @@ def textsuperscript(node):
 #---------------------------------------------------------------------------------------------------
 def validate(xml_filename):
     curdir = os.path.dirname(plastexcustom.__file__)
-    relaxng_file = os.path.abspath(os.path.join(curdir, "../basisformat.rng.xml"))
+    relaxng_file = os.path.abspath(os.path.join(curdir, "files/basisformat.rng.xml"))
     logger.debug("Open RelaxNG file {}".format(relaxng_file))
     relaxng_doc = etree.parse(relaxng_file)
     relaxng = etree.RelaxNG(relaxng_doc)
@@ -148,32 +167,21 @@ def main(*args):
 
     renderer = Renderer()
 
-    # Alle in textsizes enthaltenen Latex-Befehle werden nicht gerendert
+    # Alle in der Datei IGNORE enthaltenen Latex-Befehlsnamen werden nicht gerendert
+    tags_not_to_be_written = read_tags("IGNORE")
+    for t in tags_not_to_be_written:
+        renderer[t] = do_not_write_tags
 
-    textsizes = ["tiny", "scriptsize", "footnotesize", "small", "normalsize", "large", "Large",
-                 "LARGE", "huge", "Huge"]
-
-    other = ["count", "setcounter", "xpageref", "xlineref", "par", "noindent", "bgroup"]
-
-    for ts in textsizes:
-        renderer[ts] = do_not_write_tags
-
-    for ot in other:
-        renderer[ot] = do_not_write_tags
-
-    # Alle Latex-Befehle, die in der folgenden Liste stehen, werden nicht ins XML-Dokument
+    # Alle Latex-Befehle, die in der Datei REMOVE stehen, werden nicht ins XML-Dokument
     # geschrieben
     # Achtung: gilt auch für alle enthaltenen Kindknoten
     # Bei Bedarf ergänzen!
+    to_be_removed = read_tags("REMOVE")
 
-    to_be_ignored = ["vspace", "renewcommand", "Afootins", "Bfootins", "Cfootins", "tableofcontents",
-                     "clearpage", "cleardoublepage"]
-
-    for tbi in to_be_ignored:
+    for tbi in to_be_removed:
         renderer[tbi] = do_nothing
 
     # Alle Formelbefehle und Environments kommen in die folgende Liste
-
     math_envs = ["math", "displaymath", "eqnarray", "equation"]
     for me in math_envs:
         renderer[me] = equation_as_latexsrc
