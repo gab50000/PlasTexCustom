@@ -7,6 +7,7 @@ import logging
 import sys
 import os
 import codecs
+import subprocess
 
 from plasTeX.TeX import TeX
 from plasTeX.ConfigManager import ConfigManager
@@ -143,6 +144,8 @@ def main(*args):
     parser.add_argument("--loglevel", "-l", default="INFO",
                         choices=["info", "INFO", "debug", "DEBUG", "warn", "WARN"],
                         help="Set log level")
+    parser.add_argument("--commit", action="store_true", help="Add commit hash to first line of "
+                                                              "XML document")
     args = parser.parse_args()
 
     logger.setLevel(getattr(logging, args.loglevel.upper()))
@@ -196,6 +199,13 @@ def main(*args):
 
     # Render the document
     renderer.render(document)
+
+    if args.commit:
+        commit_hash = subprocess.check_output("git rev-parse HEAD".split()).strip()
+        with open(xml_filename, "r") as f:
+            content = f.readlines()
+        with open(xml_filename, "w") as f:
+            f.writelines(["<!-- Commit Hash: {} --> \n".format(commit_hash)] + content)
 
     if args.pretty:
         logger.info("Make XML document pretty")
