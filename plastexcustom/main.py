@@ -124,6 +124,10 @@ def textsuperscript(node):
     return u'<hi rendition="#sup">{}</hi>'.format(unicode(node))
 
 
+def convert_section(node):
+    form = u"<section> <title> {} </title>\n {} \n</section>\n"
+    return form.format(node.title, u"".join(map(unicode, node.allChildNodes)))
+
 #---------------------------------------------------------------------------------------------------
 def validate(xml_filename):
     curdir = os.path.dirname(plastexcustom.__file__)
@@ -194,6 +198,7 @@ def main(*args):
     renderer["pstart"] = open_paragraph
     renderer["pend"] = close_paragraph
     renderer["textsuperscript"] = textsuperscript
+    renderer["section"] = convert_section
 
     renderer["ss"] = eszett
 
