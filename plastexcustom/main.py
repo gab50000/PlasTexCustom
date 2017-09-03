@@ -207,10 +207,13 @@ def main(*args):
 
     if args.commit:
         commit_hash = subprocess.check_output("git rev-parse HEAD".split()).strip()
+        commit_date = subprocess.check_output("git log -1 --format=%cd".split())\
+            .decode("utf-8").strip()
         with open(xml_filename, "r") as f:
             content = f.readlines()
         with open(xml_filename, "w") as f:
-            f.writelines(["<!-- Commit Hash: {} --> \n".format(commit_hash)] + content)
+            f.writelines(["<!-- Commit Hash: {} ({}) --> \n".format(commit_hash, commit_date)]
+                         + content)
 
     if args.pretty:
         logger.info("Make XML document pretty")
