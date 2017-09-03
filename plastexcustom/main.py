@@ -104,12 +104,12 @@ def equation_as_latexsrc(node):
 
 def open_paragraph(node):
     """Öffnet einen Paragraphen mittels <p>"""
-    return u"<p>"
+    return u"\n<p>"
 
 
 def close_paragraph(node):
     """Schließt einen Paragraphen mittels </p>"""
-    return u"</p>"
+    return u"</p>\n"
 
 
 def textsize(node):
