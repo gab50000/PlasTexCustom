@@ -124,9 +124,11 @@ def textsuperscript(node):
     return u'<hi rendition="#sup">{}</hi>'.format(unicode(node))
 
 
-def convert_section(node):
-    form = u"<section> <title> {} </title>\n {} \n</section>\n"
-    return form.format(node.title, u"".join(map(unicode, node.allChildNodes)))
+def convert_section_factory(name):
+    def convert_section(node):
+        form = u"<{}> <title> {} </title>\n {} \n</{}>\n"
+        return form.format(name, node.title, unicode(node), name)
+    return convert_section
 
 #---------------------------------------------------------------------------------------------------
 def validate(xml_filename):
@@ -198,7 +200,9 @@ def main(*args):
     renderer["pstart"] = open_paragraph
     renderer["pend"] = close_paragraph
     renderer["textsuperscript"] = textsuperscript
-    renderer["section"] = convert_section
+
+    for sec in ("chapter", "section", "subsection", "subsubsection"):
+        renderer[sec] = convert_section_factory(sec)
 
     renderer["ss"] = eszett
 
