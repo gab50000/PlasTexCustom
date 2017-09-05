@@ -126,7 +126,7 @@ def textsuperscript(node):
 
 def convert_section_factory(name):
     def convert_section(node):
-        form = u"<{}> <title> {} </title>\n {} \n</{}>\n"
+        form = u"<{}> <title> {} </title>\n {} \n</{}>"
         return form.format(name, node.title, unicode(node), name)
     return convert_section
 
