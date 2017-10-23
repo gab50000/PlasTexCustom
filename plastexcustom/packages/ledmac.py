@@ -21,3 +21,11 @@ class Cfootnote(Base.Command):
 
 class lemma(Base.Command):
     args = 'text'
+
+
+class pstart(Base.Command):
+    pass
+
+
+class pend(Base.Command):
+    pass
